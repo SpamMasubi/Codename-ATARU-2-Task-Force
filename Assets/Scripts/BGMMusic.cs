@@ -22,7 +22,7 @@ public class BGMMusic : MonoBehaviour
 
     private void Update()
     {
-        /*
+        
         if (PauseMenu.isPause)
         {
             audioS.Pause();
@@ -30,7 +30,7 @@ public class BGMMusic : MonoBehaviour
         else
         {
             audioS.UnPause();
-        }*/
+        }
     }
 
     public void StopSong()

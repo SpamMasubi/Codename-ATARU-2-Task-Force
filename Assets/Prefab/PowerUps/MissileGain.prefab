@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpType: 0
   perksToGive: 4
+  timeToDestroy: 3
 --- !u!58 &9170141753830777897
 CircleCollider2D:
   m_ObjectHideFlags: 0

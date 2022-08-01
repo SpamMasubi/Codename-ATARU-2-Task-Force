@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -276831174, guid: ba68337a92539f94ea331768d34a91de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: -6472246411425760992}
   m_Layer: 8
   m_Name: AH-21 Gecko
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1814729223, guid: ba68337a92539f94ea331768d34a91de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,13 +187,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b019548d9b48504da17c0b5e3ab9da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
   projectilesToSpawn: {fileID: 7126411985309277782, guid: 73c671e170a42e5438f536186049e58d, type: 3}
   fireRate: 1
-  projectOffset: {x: 0, y: -1.3}
-  projectileSpeed: {x: 0, y: -10}
+  projectOffset: {x: 0, y: -1}
+  projectileSpeed: {x: 0, y: -12}
   isBoss: 0
+  fireOnce: 0
   healthBar: {fileID: 0}
-  scoreToIncrease: 10
+  scoreToIncrease: 5
+  specialProjectiles: {fileID: 0}
+  specialAttackTime: 0
+  doubleMissiles: 0
+  missiles: {fileID: 0}
+  missileProjectOffsetR: {x: 0, y: -1.3}
+  missileProjectOffsetL: {x: 0, y: -1.3}
+  missileSpeed: {x: 0, y: 1}
   smoothTime: 1
   enemyType: 0
 --- !u!114 &9180884506155004047
@@ -213,6 +222,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   explosionEffect: {fileID: 1956272555437364, guid: c07ae331f7494a64aa6d24356afebd33, type: 3}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
+  regularColor: {r: 0, g: 0, b: 0, a: 0}
+  flashDuration: 0
+  numberOfFlashes: 0
+  playerSprite: {fileID: 0}
 --- !u!50 &9180884506155004084
 Rigidbody2D:
   serializedVersion: 4
@@ -223,7 +237,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 9180884506155004046}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -232,7 +246,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &9180884506155004083
 PolygonCollider2D:

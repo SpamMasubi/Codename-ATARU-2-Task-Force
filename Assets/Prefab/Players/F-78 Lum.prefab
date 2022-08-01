@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1323398942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323398943}
+  m_Layer: 6
+  m_Name: LauncherR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323398943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323398942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3345326108678355079}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1764853078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1764853079}
+  m_Layer: 6
+  m_Name: LauncherL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1764853079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764853078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3345326108678355079}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3345326108678355073
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +98,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3345326108694963238}
+  - {fileID: 1323398943}
+  - {fileID: 1764853079}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,13 +194,14 @@ MonoBehaviour:
   missileButton: {fileID: 0}
   shootBulletAutomatically: 0
   bullet: {fileID: 414803094661665255, guid: 7a123831052215e408634de390df1b9e, type: 3}
-  bulletSpeed: {x: 0, y: 10}
+  bulletSpeed: {x: 0, y: 15}
   spawnOffset: {x: 0, y: 4, z: 0}
   fireBulletRate: 0.2
   bulletPoolSize: 10
   missiles: {fileID: 7126411985309277782, guid: 25cda44437fd202438510c7273d843b6, type: 3}
-  missileSpeed: {x: 0, y: 15}
-  missileSpawnOffset: {x: 2, y: 0, z: 0}
+  launcherR: {fileID: 1323398942}
+  launcherL: {fileID: 1764853078}
+  missileSpeed: {x: 0, y: 50}
   fireMissileRate: 0.2
   missilePoolSize: 2
   movementInputType: 0
@@ -157,6 +222,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   explosionEffect: {fileID: 1558453681934022, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
   explosionsfx: {fileID: 8300000, guid: adbba15a8e64e6e4c85e976a39ef0df1, type: 3}
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  regularColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.05
+  numberOfFlashes: 20
+  playerSprite: {fileID: 0}
 --- !u!50 &1759621360750068957
 Rigidbody2D:
   serializedVersion: 4

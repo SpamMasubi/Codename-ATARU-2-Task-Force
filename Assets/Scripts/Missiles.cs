@@ -33,9 +33,12 @@ public class Missiles : MonoBehaviour
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
             Destroy(explosion, explosionEffectLength);
         }
-        if (collision.gameObject.GetComponent<HealthManager>())
+        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
+            if (collision.gameObject.GetComponent<PolygonCollider2D>().enabled)
+            {
+                collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
+            }
         }
         PlayerController.instance.ReleaseMissile(gameObject);//Destroy bullet;
     }

@@ -25,9 +25,12 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collided = true;
-        if (collision.gameObject.GetComponent<HealthManager>())
+        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
+            if (collision.gameObject.GetComponent<PolygonCollider2D>().enabled)
+            {
+                collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
+            }
         }
         PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
     }

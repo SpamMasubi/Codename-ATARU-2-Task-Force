@@ -21,7 +21,7 @@ public class PowerUPSpawners : MonoBehaviour
             {
                 if (Random.value <= probabilityFactor)
                 {
-                    Instantiate(powerUps[n].gameObject, transform);
+                    Instantiate(powerUps[n].gameObject);
                 }
             }
             timer = 0f;

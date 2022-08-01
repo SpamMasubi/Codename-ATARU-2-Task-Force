@@ -6,15 +6,22 @@ public class PowerUps : MonoBehaviour
 {
     public enum PowerUpType
     {
-        Ammo, Health
+        Ammo, Health, OneUP, Shield
     }
 
     public PowerUpType powerUpType;
     public int perksToGive = 10;
+    public float timeToDestroy = 1f;//Time after which powerups will be destroy if no collision happens
 
-    private void Start()
+    private float timer = 0f;
+    private void Update()
     {
-        transform.position = new Vector2(Random.Range(0f, 1f), Random.Range(0.9f, 0.95f));
+        timer += Time.deltaTime;
+        if (timer >= timeToDestroy)
+        {
+            timer = 0f;
+            Destroy(gameObject);//Destroy Loot Plane;        
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +33,13 @@ public class PowerUps : MonoBehaviour
                 if(GameStats.instance != null)
                 {
                     GameStats.instance.addMissileByAmount(perksToGive);
+                }
+            }
+            else if(powerUpType == PowerUpType.OneUP)
+            {
+                if(GameStats.instance != null)
+                {
+                    GameStats.instance.addLivesByAmount(perksToGive);
                 }
             }
             else

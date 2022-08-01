@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class GameStats : MonoBehaviour
 {
     public static GameStats instance;
-    public int numOfMissiles = 12;
-    public Text missileText;
+    public Text missileText, livesText;
 
+    private void Start()
+    {
+        missileText = GameObject.Find("MAText").GetComponent<Text>();
+        livesText = GameObject.Find("LivesText").GetComponent<Text>();
+    }
     private void Awake()
     {
         instance = this;
@@ -18,13 +22,17 @@ public class GameStats : MonoBehaviour
     {
         if(missileText != null)
         {
-            missileText.text = numOfMissiles.ToString();
+            missileText.text = FindObjectOfType<GameManager>().numOfMissiles.ToString();
+        }
+        if(livesText != null)
+        {
+            livesText.text = FindObjectOfType<GameManager>().numOfLives.ToString();
         }
     }
     public bool checkCanShootMissile(int amount)
     {
         bool p = false;
-        if(numOfMissiles - amount >= 0)
+        if(FindObjectOfType<GameManager>().numOfMissiles - amount >= 0)
         {
             p = true;
         }
@@ -33,9 +41,9 @@ public class GameStats : MonoBehaviour
     }
     public void shootMissileByAmount(int amount)
     {
-        if(numOfMissiles - amount >= 0)
+        if(FindObjectOfType<GameManager>().numOfMissiles - amount >= 0)
         {
-            numOfMissiles -= amount;
+            FindObjectOfType<GameManager>().numOfMissiles -= amount;
         }
     }
 
@@ -43,7 +51,22 @@ public class GameStats : MonoBehaviour
     {
         if (amount >= 0)
         {
-            numOfMissiles += amount;
+            FindObjectOfType<GameManager>().numOfMissiles += amount;
+        }
+    }    
+    public void loseLives(int amount)
+    {
+        if(FindObjectOfType<GameManager>().numOfLives - amount >= 0)
+        {
+            FindObjectOfType<GameManager>().numOfLives -= amount;
+        }
+    }
+
+    public void addLivesByAmount(int amount)
+    {
+        if (amount >= 0)
+        {
+            FindObjectOfType<GameManager>().numOfLives += amount;
         }
     }
 }

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2042836919788914420}
   m_Layer: 7
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: PlayerProjectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 7126411985309277782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5748736472456728458}
@@ -160,9 +160,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1581184289
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1344606619, guid: 462c3251456434544ae76594e4d2f150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 4854961481124514091, guid: ef94492c112b9244c90db872613ac63e, type: 3}
   explosionEffectLength: 0.22
-  damage: 10
+  damage: 5
   timeToDestroy: 0.6
   explosionSFX: {fileID: 8300000, guid: edeffb29104aa5a449a61f5eab737501, type: 3}
 --- !u!95 &6809363223105851011
@@ -270,7 +270,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a06f6444b7b8f0f4489c0dcfea012d1f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -6,24 +6,27 @@ public class EnemySpawner : MonoBehaviour
 {
     public int maxEnemies = 3;//Max number of enemies at a time, We are going to count enemy wave as a single enemy
     public GameObject[] enemiesToSpawn = new GameObject[2];
-    public int enemiesToSpawnBoss = 5; //The number of enemies we ahve to defeat to get to the enemy boss
     public GameObject enemyBoss;
     public GameObject bossHealthBar;
     public static int enemiesDefeated = 0;
-    
-    private int interval = 20;
+
+    float secondsBetweenSpawn = 3f;
+    float elapsedTime = 0.0f;
     private int getNumberOfEnemies()
     {
         int number = 0;
         Enemy[] temp = GameObject.FindObjectsOfType<Enemy>();
         for(int i = 0; i < temp.Length; i++)
         {
-            if(temp[i].enemyType == Enemy.EnemyType.Individual)
+            if (temp[i].enemyType == Enemy.EnemyType.Individual || temp[i].enemyType == Enemy.EnemyType.StraightFlight || temp[i].enemyType == Enemy.EnemyType.Ground)
             {
                 number++;
             }
+            else if(temp[i].enemyType == Enemy.EnemyType.Wave)
+            {
+                number += GameObject.FindObjectsOfType<EnemyWave>().Length;
+            }
         }
-        number += GameObject.FindObjectsOfType<EnemyWave>().Length;
         return number;
     }
 
@@ -35,18 +38,26 @@ public class EnemySpawner : MonoBehaviour
         }
 
         int n = Random.Range(0, enemiesToSpawn.Length);
-        int i = getNumberOfEnemies();
-        for (; i <= maxEnemies; ++i)
+        for (int i = getNumberOfEnemies(); i < maxEnemies; ++i)
         {
-            n = Random.Range(0, enemiesToSpawn.Length);
             if (enemiesToSpawn[n] != null)
             {
-                Instantiate(enemiesToSpawn[n]);
+                if (!TimeCounter.bossAppeared)
+                {
+                    elapsedTime += Time.deltaTime;
+
+                    if (elapsedTime > secondsBetweenSpawn)
+                    {
+                        elapsedTime = 0;
+                        Instantiate(enemiesToSpawn[n]);
+                    }
+                }
             }
+            n = Random.Range(0, enemiesToSpawn.Length);
         }
     }
 
-    private void spawnEnemyBoss()
+    public void spawnEnemyBoss()
     {
         if(enemyBoss != null)
         {
@@ -58,33 +69,17 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("spawnEnemies", 1f);
         if(bossHealthBar != null)
         {
             bossHealthBar.SetActive(false);
         }
     }
-
-    private bool exec = false;
     // Update is called once per frame
     void Update()
     {
-        if (enemiesDefeated >= enemiesToSpawnBoss)
+        if (!TimeCounter.bossAppeared)
         {
-            if (!exec)
-            {
-                //Spawn Boss
-                spawnEnemyBoss();
-                exec = true;
-            }
-           
-        }
-        else
-        {
-            if (Time.frameCount % interval == 0)
-            {
-                Invoke("spawnEnemies", 1f);
-            }
+            Invoke("spawnEnemies", 1f);
         }
     }
 }

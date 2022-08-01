@@ -8,22 +8,14 @@ public class GameMenuManager : MonoBehaviour
     public static GameMenuManager instance;
     public enum PlayerMovementInputType
     {
-        PointerControl, ButtonControl, TiltControl
+        MouseControl, ButtonControl, TiltControl
     }
     private string playerMovementTypeKey = "PMIT";
     private PlayerMovementInputType _pp;
     public PlayerMovementInputType currentPMIT { get { return _pp; } }
     void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
     }
     private void Start()
     {
@@ -52,9 +44,9 @@ public class GameMenuManager : MonoBehaviour
         PlayerPrefs.SetInt(playerMovementTypeKey, 1);
     }
 
-    public void switchToPointer()
+    public void switchToMouse()
     {
-        _pp = PlayerMovementInputType.PointerControl;
+        _pp = PlayerMovementInputType.MouseControl;
         PlayerPrefs.SetInt(playerMovementTypeKey, 0);
     }
 }

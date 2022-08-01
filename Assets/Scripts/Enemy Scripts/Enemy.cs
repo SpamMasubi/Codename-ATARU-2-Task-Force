@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] protected int damage = 5;
     public GameObject projectilesToSpawn; //projectiles to spawn
     public float fireRate = 0.3f;
     public Vector2 projectOffset = new Vector2(0f, -1.3f);
     public Vector2 projectileSpeed = new Vector2(0f, -1f);
     public bool isBoss = false;
+    public bool fireOnce = false;
     public GameObject healthBar;
     public int scoreToIncrease = 10; //Score increased when enemies killed
     public int ScoreToIncrease { get { return scoreToIncrease; } }
     private bool moveToFro = true;
+
+    [Header("Boss Attributes")]
+    public GameObject specialProjectiles;
+    public float specialAttackTime = 0f;
+    float specialAttackTimer = 0f;
+    //missiles projectiles (if uses missiles for double)
+    public bool doubleMissiles;
+    public GameObject missiles;
+    public Vector2 missileProjectOffsetR = new Vector2(0f, -1.3f);
+    public Vector2 missileProjectOffsetL = new Vector2(0f, -1.3f);
+    public Vector2 missileSpeed = new Vector2(0f, 1f);
 
     private float minHeight = 0f, maxHeight = 0f, minWidth = 0f, maxWidth = 0f;
     private Vector2 vel1, vel2;
@@ -22,35 +35,63 @@ public class Enemy : MonoBehaviour
     private bool closerToMin = false, closerToMax = false, exec = false;
     public enum EnemyType
     {
-        Individual, Wave
+        Individual, Wave, Ground, StraightFlight, None
     }
 
     public EnemyType enemyType;
 
     private void Fire()
     {
-        Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
-        GameObject proj = Instantiate(projectilesToSpawn, targetPos, projectilesToSpawn.transform.rotation) as GameObject;
-        if (proj.GetComponent<Rigidbody2D>())
+        if (doubleMissiles)
         {
-            proj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+            Vector2 targetPosR = new Vector2(transform.position.x + missileProjectOffsetR.x, transform.position.y + missileProjectOffsetR.y);
+            Vector2 targetPosL = new Vector2(transform.position.x + missileProjectOffsetL.x, transform.position.y + missileProjectOffsetL.y);
+            GameObject projR = Instantiate(missiles, targetPosR, missiles.transform.rotation) as GameObject;
+            GameObject projL = Instantiate(missiles, targetPosL, missiles.transform.rotation) as GameObject;
+            if (projR.GetComponent<Rigidbody2D>() && projL.GetComponent<Rigidbody2D>())
+            {
+                projR.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+                projL.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
+            GameObject proj = Instantiate(projectilesToSpawn, targetPos, projectilesToSpawn.transform.rotation) as GameObject;
+            if (proj.GetComponent<Rigidbody2D>())
+            {
+                proj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+            }
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        if (projectilesToSpawn != null)
+        if (projectilesToSpawn != null && !fireOnce)
         {
             InvokeRepeating("Fire", 0.0f, fireRate);
         }
-        if (healthBar != null)
+        else if(projectilesToSpawn != null && fireOnce)
         {
-            healthBar.SetActive(true);
+            Invoke("Fire", 1.5f);
         }
-        if (enemyType == EnemyType.Individual)
+        if (enemyType == EnemyType.Individual || enemyType == EnemyType.StraightFlight || enemyType == EnemyType.Ground)
         {
-            minHeight = Screen.height * 0.7f;
-            maxHeight = Screen.height * 0.9f;
+            if (isBoss)
+            {
+                minHeight = Screen.height * 0.85f;
+                maxHeight = minHeight;
+            }
+            else if (enemyType == EnemyType.StraightFlight || enemyType == EnemyType.Ground)
+            {
+                minHeight = Screen.height * 1.02f;
+                maxHeight = minHeight;
+            }
+            else
+            {
+                minHeight = Screen.height * 0.8f;
+                maxHeight = Screen.height * 0.9f;
+            }
             Vector2 minH = Camera.main.ScreenToWorldPoint(new Vector2(0f, minHeight));
             Vector2 maxH = Camera.main.ScreenToWorldPoint(new Vector2(0f, maxHeight));
             float height = Random.Range(minH.y, maxH.y);
@@ -67,9 +108,28 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
+        }
+    }
+
+    public void enableHealth()
+    {
+        GetComponent<HealthManager>().enabled = true;
+    }
+
+    public void StartBoss()
+    {
+        GetComponent<Enemy>().enabled = true;
+        GetComponent<PolygonCollider2D>().enabled = true;
+    }
+
     private void Update()
     {
-        if(enemyType == EnemyType.Individual && moveToFro)
+        if (enemyType == EnemyType.Individual && moveToFro)
         {
             if (!exec)
             {
@@ -100,6 +160,28 @@ public class Enemy : MonoBehaviour
                 else if (closerToMin)
                 {
                     transform.position = Vector2.SmoothDamp(transform.position, maxW, ref vel2, smoothTime, maxSpeed, Time.deltaTime);
+                }
+            }
+        }
+
+        if (isBoss)
+        {
+            //Special attack for boss
+            if (specialAttackTimer <= 0f)
+            {
+                specialAttackTimer = specialAttackTime;
+            }
+            if (specialAttackTimer > 0f)
+            {
+                specialAttackTimer -= Time.deltaTime;
+                if (specialAttackTimer <= 0f)
+                {
+                    Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
+                    GameObject specialProj = Instantiate(specialProjectiles, targetPos, specialProjectiles.transform.rotation) as GameObject;
+                    if (specialProj.GetComponent<Rigidbody2D>())
+                    {
+                        specialProj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+                    }
                 }
             }
         }

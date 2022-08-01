@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
 
 	//missiles
 	public GameObject missiles;
+	public GameObject launcherR, launcherL;
 	public Vector2 missileSpeed = new Vector2(0f, 1f);
-	public Vector3 missileSpawnOffset;
 	public float fireMissileRate = 0.2f;
 	public int missilePoolSize = 30;
 
@@ -41,20 +41,16 @@ public class PlayerController : MonoBehaviour
     {
 		bulletPool = new ObjectPool(bullet, bulletPoolSize, "PlayerBulletPool");
 		missilePool = new ObjectPool(missiles, missilePoolSize, "PlayerMissilePool");
-    }
+		movementInputType = GameMenuManager.instance.currentPMIT;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-
+	// Update is called once per frame
+	void Update()
+	{
 		GetInput();
-		if(GameMenuManager.instance != null){
-			movementInputType = GameMenuManager.instance.currentPMIT;
-			Destroy(GameMenuManager.instance.gameObject);
-        }
 
-        if(movementInputType == GameMenuManager.PlayerMovementInputType.ButtonControl)
-        {
+		if (movementInputType == GameMenuManager.PlayerMovementInputType.ButtonControl)
+		{
 #if UNITY_STANDALONE || UNITY_WEBGL
 
 			float x = Input.GetAxisRaw("Horizontal");//the value will be -1, 0 or 1 (for left, no input, and right)
@@ -65,8 +61,22 @@ public class PlayerController : MonoBehaviour
 
 			//now we call the function that computes and sets the player's position
 			Move(direction);
+
+			if (Input.GetButtonDown("Fire1"))
+			{
+				InvokeRepeating("Fire", 0.0f, fireBulletRate);
+			}
+			else if (Input.GetButtonUp("Fire1"))
+			{
+				CancelInvoke("Fire");
+			}
+
+			if (Input.GetButtonDown("Fire2"))
+			{
+				MissileFire();
+			}
 #endif
-			
+
 
 #if UNITY_ANDROID || UNITY_IOS
 			if(bulletPressed && bulletButton.value1)
@@ -85,64 +95,60 @@ public class PlayerController : MonoBehaviour
 				missileButton.value1 = false;
             }
 #endif
-        }
-        else if(movementInputType == GameMenuManager.PlayerMovementInputType.PointerControl)
-        {
-#if UNITY_STANDALONE || UNITY_WEBGL
+		}
+		else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)
+		{
 			Vector2 rawPos = Input.mousePosition;
 			Vector2 worldPos = Camera.main.ScreenToWorldPoint(rawPos);
-			if (Input.GetKey(KeyCode.Mouse0))
+
+			//find the screen limits to the player's movement (left, right, top and bottom edges of the screen)
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //this is the bottom-left point (corner) of the screen
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //this is the top-right point (corner) of the screen
+
+			max.x = max.x - 2.5f; //subtract the player sprite half width
+			min.x = min.x + 2.5f; //add the player sprite half width
+
+			max.y = max.y - 2.5f; //subtract the player sprite half height
+			min.y = min.y + 2.5f; //add the player sprite half height
+
+			//Get the player's current position
+			Vector2 pos = Vector2.Lerp(transform.position, worldPos, speed * Time.deltaTime); ;
+
+			//Make sure the new position is outside the screen
+			pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+			pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+			//Update the player's position
+			transform.position = pos;
+			if (shootBulletAutomatically)
 			{
-				
-				//find the screen limits to the player's movement (left, right, top and bottom edges of the screen)
-				Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //this is the bottom-left point (corner) of the screen
-				Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //this is the top-right point (corner) of the screen
-
-				max.x = max.x - 2.5f; //subtract the player sprite half width
-				min.x = min.x + 2.5f; //add the player sprite half width
-
-				max.y = max.y - 2.5f; //subtract the player sprite half height
-				min.y = min.y + 2.5f; //add the player sprite half height
-
-				//Get the player's current position
-				Vector2 pos = Vector2.Lerp(transform.position, worldPos, speed * Time.deltaTime); ;
-
-				//Make sure the new position is outside the screen
-				pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-				pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-
-				//Update the player's position
-				transform.position = pos;
-				if (shootBulletAutomatically)
+				counter += Time.deltaTime;
+				if (counter >= bulletInterval)
 				{
-					counter += Time.deltaTime;
-					if (counter >= bulletInterval)
-					{
-						Fire();
-						counter = 0;
-					}
+					Fire();
+					counter = 0;
 				}
+			}
 
-            }
-			if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
+			if (Input.GetKeyDown(KeyCode.Mouse0))
+			{
 				InvokeRepeating("Fire", 0.0f, fireBulletRate);
-            }else if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
+			}
+			else if (Input.GetKeyUp(KeyCode.Mouse0))
+			{
 				CancelInvoke("Fire");
-            }
+			}
 
-            if (Input.GetKeyDown(KeyCode.Mouse2))
-            {
+			if (Input.GetKeyDown(KeyCode.Mouse1))
+			{
 				MissileFire();
-            }
-#endif
-        }
-        else
-        {
+			}
+		}
+		else
+		{
 			//Tilt Control
 			transform.Translate(speedAccX * Time.deltaTime * Input.acceleration.x, speedAccY * Time.deltaTime * Input.acceleration.y, 0f);
-        }
+		}
 
 	}
 
@@ -159,22 +165,34 @@ public class PlayerController : MonoBehaviour
     }
 
 	void Fire()
-    {
+	{
 		GameObject bulletInstantiate = bulletPool.GetInstance();
 		bulletInstantiate.transform.position = transform.position + spawnOffset;
 		bulletInstantiate.GetComponent<Rigidbody2D>().AddForce(bulletSpeed, ForceMode2D.Impulse);
-    }
+	}
 	
 	void MissileFire()
     {
 		if (GameStats.instance.checkCanShootMissile(1))
 		{
-			GameObject missileInstantiate = missilePool.GetInstance();
-			missileInstantiate.transform.position = transform.position + missileSpawnOffset;
-			missileInstantiate.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+			GameObject missileInstantiateR = missilePool.GetInstance();
+			GameObject missileInstantiateL = missilePool.GetInstance();
+			missileInstantiateR.transform.position = launcherR.transform.position;
+			missileInstantiateR.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+			missileInstantiateL.transform.position = launcherL.transform.position;
+			missileInstantiateL.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
 			GameStats.instance.shootMissileByAmount(1);
 		}
     }
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (FindObjectOfType<Enemy>()) {
+			if (collision.gameObject.CompareTag("Enemy") && !FindObjectOfType<Enemy>().isBoss)
+			{
+				collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(10000);
+			}
+		}
+	}
 
 	public void ReleaseBullet(GameObject bullet)
     {

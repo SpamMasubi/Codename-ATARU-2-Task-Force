@@ -8,10 +8,7 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText, highScoreText;
     public static ScoreManager instance;
 
-    private int currentScore = 0;
     private string highScoreKey = "High Score";
-
-    public int Score { get { return currentScore; } }
 
     private void Awake()
     {
@@ -22,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     {
         if(scoreText != null)
         {
-            scoreText.text = currentScore.ToString();
+            scoreText.text = FindObjectOfType<GameManager>().scores.ToString();
         }
         if(highScoreText != null)
         {
@@ -33,12 +30,12 @@ public class ScoreManager : MonoBehaviour
     public void setHighScore()
     {
         int HS = PlayerPrefs.GetInt(highScoreKey);
-        if(currentScore <= HS)
+        if(FindObjectOfType<GameManager>().scores <= HS)
         {
             return;
         }
 
-        PlayerPrefs.SetInt(highScoreKey, currentScore);
+        PlayerPrefs.SetInt(highScoreKey, FindObjectOfType<GameManager>().scores);
     }
 
     public void IncreaseScore(int amount)
@@ -46,7 +43,7 @@ public class ScoreManager : MonoBehaviour
         //Increase the Score
         if(amount > 0)
         {
-            currentScore += amount;
+            FindObjectOfType<GameManager>().scores += amount;
         }
     }
 }

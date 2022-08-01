@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 748645870, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 1880785839, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -184,9 +184,9 @@ GameObject:
   - component: {fileID: 1114239097424515553}
   - component: {fileID: 6764657448267299201}
   - component: {fileID: -3505940581780226963}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: MiG-41 Chrome
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -917380273, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -292,13 +292,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b019548d9b48504da17c0b5e3ab9da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesToSpawn: {fileID: 7126411985309277782, guid: 874816f569e6980458e0edd26a942ad5, type: 3}
+  damage: 5
+  projectilesToSpawn: {fileID: 4862576632115095607, guid: 874816f569e6980458e0edd26a942ad5, type: 3}
   fireRate: 1
   projectOffset: {x: 0, y: -1}
-  projectileSpeed: {x: 0, y: -10}
+  projectileSpeed: {x: 0, y: -5}
   isBoss: 1
+  fireOnce: 0
   healthBar: {fileID: 0}
   scoreToIncrease: 100
+  specialProjectiles: {fileID: 7126411985309277782, guid: 8ccb30da4d4183e4db17e3a5cf57b940, type: 3}
+  specialAttackTime: 3
+  doubleMissiles: 1
+  missiles: {fileID: 4862576632115095607, guid: 874816f569e6980458e0edd26a942ad5, type: 3}
+  missileProjectOffsetR: {x: 2, y: -1}
+  missileProjectOffsetL: {x: -2, y: -1}
+  missileSpeed: {x: 0, y: -30}
   smoothTime: 1
   enemyType: 0
 --- !u!114 &2533064903540288578
@@ -314,10 +323,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minHealth: 0
-  maxHealth: 100
+  maxHealth: 30
   healthFill: {fileID: 0}
   explosionEffect: {fileID: 1956272555437364, guid: c07ae331f7494a64aa6d24356afebd33, type: 3}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  regularColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.05
+  numberOfFlashes: 20
+  playerSprite: {fileID: 0}
 --- !u!60 &1114239097424515553
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -372,7 +386,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 8490220276731147170}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -381,7 +395,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!82 &-3505940581780226963
 AudioSource:
