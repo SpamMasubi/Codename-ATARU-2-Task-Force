@@ -48,33 +48,34 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		GetInput();
-
-		if (movementInputType == GameMenuManager.PlayerMovementInputType.ButtonControl)
+		if (!PauseMenu.isPause)
 		{
+			if (movementInputType == GameMenuManager.PlayerMovementInputType.ButtonControl)
+			{
 #if UNITY_STANDALONE || UNITY_WEBGL
 
-			float x = Input.GetAxisRaw("Horizontal");//the value will be -1, 0 or 1 (for left, no input, and right)
-			float y = Input.GetAxisRaw("Vertical");//the value will be -1, 0 or 1 (for down, no input, and up)
+				float x = Input.GetAxisRaw("Horizontal");//the value will be -1, 0 or 1 (for left, no input, and right)
+				float y = Input.GetAxisRaw("Vertical");//the value will be -1, 0 or 1 (for down, no input, and up)
 
-			//now based on the input we compute a direction vector, and we normalize it to get a unit vector
-			Vector2 direction = new Vector2(x, y).normalized;
+				//now based on the input we compute a direction vector, and we normalize it to get a unit vector
+				Vector2 direction = new Vector2(x, y).normalized;
 
-			//now we call the function that computes and sets the player's position
-			Move(direction);
+				//now we call the function that computes and sets the player's position
+				Move(direction);
 
-			if (Input.GetButtonDown("Fire1"))
-			{
-				InvokeRepeating("Fire", 0.0f, fireBulletRate);
-			}
-			else if (Input.GetButtonUp("Fire1"))
-			{
-				CancelInvoke("Fire");
-			}
+				if (Input.GetButtonDown("Fire1"))
+				{
+					InvokeRepeating("Fire", 0.0f, fireBulletRate);
+				}
+				else if (Input.GetButtonUp("Fire1"))
+				{
+					CancelInvoke("Fire");
+				}
 
-			if (Input.GetButtonDown("Fire2"))
-			{
-				MissileFire();
-			}
+				if (Input.GetButtonDown("Fire2"))
+				{
+					MissileFire();
+				}
 #endif
 
 
@@ -95,59 +96,60 @@ public class PlayerController : MonoBehaviour
 				missileButton.value1 = false;
             }
 #endif
-		}
-		else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)
-		{
-			Vector2 rawPos = Input.mousePosition;
-			Vector2 worldPos = Camera.main.ScreenToWorldPoint(rawPos);
-
-			//find the screen limits to the player's movement (left, right, top and bottom edges of the screen)
-			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //this is the bottom-left point (corner) of the screen
-			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //this is the top-right point (corner) of the screen
-
-			max.x = max.x - 2.5f; //subtract the player sprite half width
-			min.x = min.x + 2.5f; //add the player sprite half width
-
-			max.y = max.y - 2.5f; //subtract the player sprite half height
-			min.y = min.y + 2.5f; //add the player sprite half height
-
-			//Get the player's current position
-			Vector2 pos = Vector2.Lerp(transform.position, worldPos, speed * Time.deltaTime); ;
-
-			//Make sure the new position is outside the screen
-			pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-			pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-
-			//Update the player's position
-			transform.position = pos;
-			if (shootBulletAutomatically)
+			}
+			else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)
 			{
-				counter += Time.deltaTime;
-				if (counter >= bulletInterval)
+				Vector2 rawPos = Input.mousePosition;
+				Vector2 worldPos = Camera.main.ScreenToWorldPoint(rawPos);
+
+				//find the screen limits to the player's movement (left, right, top and bottom edges of the screen)
+				Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //this is the bottom-left point (corner) of the screen
+				Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //this is the top-right point (corner) of the screen
+
+				max.x = max.x - 2.5f; //subtract the player sprite half width
+				min.x = min.x + 2.5f; //add the player sprite half width
+
+				max.y = max.y - 2.5f; //subtract the player sprite half height
+				min.y = min.y + 2.5f; //add the player sprite half height
+
+				//Get the player's current position
+				Vector2 pos = Vector2.Lerp(transform.position, worldPos, speed * Time.deltaTime); ;
+
+				//Make sure the new position is outside the screen
+				pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+				pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+				//Update the player's position
+				transform.position = pos;
+				if (shootBulletAutomatically)
 				{
-					Fire();
-					counter = 0;
+					counter += Time.deltaTime;
+					if (counter >= bulletInterval)
+					{
+						Fire();
+						counter = 0;
+					}
+				}
+
+				if (Input.GetKeyDown(KeyCode.Mouse0))
+				{
+					InvokeRepeating("Fire", 0.0f, fireBulletRate);
+				}
+				else if (Input.GetKeyUp(KeyCode.Mouse0))
+				{
+					CancelInvoke("Fire");
+				}
+
+				if (Input.GetKeyDown(KeyCode.Mouse1))
+				{
+					MissileFire();
 				}
 			}
-
-			if (Input.GetKeyDown(KeyCode.Mouse0))
+			else
 			{
-				InvokeRepeating("Fire", 0.0f, fireBulletRate);
+				//Tilt Control
+				transform.Translate(speedAccX * Time.deltaTime * Input.acceleration.x, speedAccY * Time.deltaTime * Input.acceleration.y, 0f);
 			}
-			else if (Input.GetKeyUp(KeyCode.Mouse0))
-			{
-				CancelInvoke("Fire");
-			}
-
-			if (Input.GetKeyDown(KeyCode.Mouse1))
-			{
-				MissileFire();
-			}
-		}
-		else
-		{
-			//Tilt Control
-			transform.Translate(speedAccX * Time.deltaTime * Input.acceleration.x, speedAccY * Time.deltaTime * Input.acceleration.y, 0f);
 		}
 
 	}

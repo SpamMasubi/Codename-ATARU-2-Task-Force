@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameUIManager : MonoBehaviour
 {
     public GameObject gamePlayCanvas, gameOverCanvas, winCanvas;
+    public AudioClip selection;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +49,17 @@ public class GameUIManager : MonoBehaviour
 
     public void loadScene(int index)
     {
+        playSound();
         SceneManager.LoadScene(index);
         EnemySpawner.enemiesDefeated = 0;
         TimeCounter.bossAppeared = false;
+        GameManager.stage += 1;
         BGMMusic.instance.PlaySong(BGMMusic.instance.levelSong);
     }
+
+    public void playSound()
+    {
+        GameSoundManager.instance.playSFX(selection, 1f);
+    }
+
 }

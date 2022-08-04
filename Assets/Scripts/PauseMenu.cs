@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject resumeButton, quitButton;
+    public AudioClip selection;
 
     public static bool isPause;
 
@@ -16,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Enable Debug Button 1") || Input.GetKeyDown(KeyCode.Escape))
         {
+            playSound();
             PauseUnPause();
         }
     }
@@ -42,6 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        playSound();
         isPause = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -49,10 +52,16 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu(int index)
     {
+        playSound();
         isPause = false;
         SceneManager.LoadScene(index);
         Time.timeScale = 1f;
         EnemySpawner.enemiesDefeated = 0;
         TimeCounter.bossAppeared = false;
+    }
+
+    public void playSound()
+    {
+        GameSoundManager.instance.playSFX(selection, 1f);
     }
 }

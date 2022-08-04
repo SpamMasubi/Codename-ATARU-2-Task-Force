@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameMenuManager : MonoBehaviour
 {
     public static GameMenuManager instance;
+    public AudioClip selection;
     public enum PlayerMovementInputType
     {
         MouseControl, ButtonControl, TiltControl
     }
     private string playerMovementTypeKey = "PMIT";
     private PlayerMovementInputType _pp;
+    private bool hasSelected;
     public PlayerMovementInputType currentPMIT { get { return _pp; } }
     void Awake()
     {
@@ -25,28 +27,49 @@ public class GameMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
+        playSound();
         Application.Quit();
     }
 
-    public void LoadScene(int index)
+    public void startGame()
     {
+        if (!hasSelected)
+        {
+            hasSelected = true;
+            playSound();
+            StartCoroutine(LoadScene(1));
+        }
+    }
+
+    public IEnumerator LoadScene(int index)
+    {
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(index);
+        hasSelected = false;
     }
 
     public void switchToTilt()
     {
+        playSound();
         _pp = PlayerMovementInputType.TiltControl;
         PlayerPrefs.SetInt(playerMovementTypeKey, 2);
     }
     public void switchToButton()
     {
+        playSound();
         _pp = PlayerMovementInputType.ButtonControl;
         PlayerPrefs.SetInt(playerMovementTypeKey, 1);
     }
 
     public void switchToMouse()
     {
+        playSound();
         _pp = PlayerMovementInputType.MouseControl;
         PlayerPrefs.SetInt(playerMovementTypeKey, 0);
+    }
+
+    public void playSound()
+    {
+        GameSoundManager.instance.playSFX(selection, 1f);
     }
 }

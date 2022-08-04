@@ -8,9 +8,10 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemiesToSpawn = new GameObject[2];
     public GameObject enemyBoss;
     public GameObject bossHealthBar;
+    public GameObject dialogue; 
     public static int enemiesDefeated = 0;
 
-    float secondsBetweenSpawn = 3f;
+    float secondsBetweenSpawn = 1.2f;
     float elapsedTime = 0.0f;
     private int getNumberOfEnemies()
     {
@@ -64,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
             BGMMusic.instance.PlaySong(BGMMusic.instance.bossSong);
             Instantiate(enemyBoss);
             bossHealthBar.SetActive(true);
+            dialogue.SetActive(true);
         }
     }
     // Start is called before the first frame update
