@@ -29,7 +29,7 @@ public class ChapterIntro : MonoBehaviour
                 break;
             case 3:
                 stageTitle.text = "Stage 3";
-                chapterName.text = "The Return of ATARU";
+                chapterName.text = "The Road to Victory";
                 break;
             case 4:
                 stageTitle.text = "Stage 4";
@@ -53,7 +53,7 @@ public class ChapterIntro : MonoBehaviour
             else if(Input.GetButtonDown("Fire1") || Input.GetButtonDown("Submit"))
             {
                 playSound();
-                StartCoroutine(NextStage(GameManager.stage + 1));
+                StartCoroutine(NextStage(GameManager.stage + 2));
             }
         }
     }
@@ -63,7 +63,7 @@ public class ChapterIntro : MonoBehaviour
         if (!hasSelected)
         {
             playSound();
-            StartCoroutine(NextStage(GameManager.stage + 1));
+            StartCoroutine(NextStage(GameManager.stage + 2));
         }
     }
 

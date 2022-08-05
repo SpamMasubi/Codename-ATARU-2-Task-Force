@@ -297,12 +297,15 @@ MonoBehaviour:
   fireRate: 1
   projectOffset: {x: 0, y: -1}
   projectileSpeed: {x: 0, y: -5}
+  offset: 3.5
   isBoss: 1
   fireOnce: 0
   healthBar: {fileID: 0}
   scoreToIncrease: 100
   specialProjectiles: {fileID: 7126411985309277782, guid: 8ccb30da4d4183e4db17e3a5cf57b940, type: 3}
   specialAttackTime: 3
+  cannon: {fileID: 0}
+  cannonReadyTime: 0
   doubleMissiles: 1
   missiles: {fileID: 4862576632115095607, guid: 874816f569e6980458e0edd26a942ad5, type: 3}
   missileProjectOffsetR: {x: 2, y: -1}

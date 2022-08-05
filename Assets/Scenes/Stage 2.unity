@@ -605,7 +605,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2406,7 +2406,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2828,7 +2828,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 685013213}
   resumeButton: {fileID: 109928644}
   quitButton: {fileID: 1682900325}
-  selection: {fileID: 0}
+  selection: {fileID: 8300000, guid: b9d5ed2849ac7394f8baae5e3470a06f, type: 3}
 --- !u!114 &1012484083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2879,7 +2879,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3241,7 +3241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.906, y: -7.19}
+  m_AnchoredPosition: {x: 5.906, y: -11}
   m_SizeDelta: {x: 252.231, y: 18.429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110876805
@@ -4301,7 +4301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.9228, y: -7.19}
+  m_AnchoredPosition: {x: 5.9228, y: -11}
   m_SizeDelta: {x: 260.49, y: 18.429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615399539
@@ -5069,11 +5069,11 @@ PrefabInstance:
     - target: {fileID: 3345326108678355077, guid: ed7d038f5df071c4b919998044d3d427, type: 3}
       propertyPath: bulletButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 84834650}
     - target: {fileID: 3345326108678355077, guid: ed7d038f5df071c4b919998044d3d427, type: 3}
       propertyPath: missileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 666616934}
     - target: {fileID: 3345326108678355079, guid: ed7d038f5df071c4b919998044d3d427, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5121,7 +5121,7 @@ PrefabInstance:
     - target: {fileID: 7180454310415592141, guid: ed7d038f5df071c4b919998044d3d427, type: 3}
       propertyPath: healthFill
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 580912871}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d038f5df071c4b919998044d3d427, type: 3}

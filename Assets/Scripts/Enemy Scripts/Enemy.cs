@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float fireRate = 0.3f;
     public Vector2 projectOffset = new Vector2(0f, -1.3f);
     public Vector2 projectileSpeed = new Vector2(0f, -1f);
+    public float offset;
     public bool isBoss = false;
     public bool fireOnce = false;
     public GameObject healthBar;
@@ -20,6 +21,9 @@ public class Enemy : MonoBehaviour
     public GameObject specialProjectiles;
     public float specialAttackTime = 0f;
     float specialAttackTimer = 0f;
+    public Transform cannon;
+    public float cannonReadyTime = 0f;
+    float cannonReadyTimer = 0f;
     //missiles projectiles (if uses missiles for double)
     public bool doubleMissiles;
     public GameObject missiles;
@@ -67,6 +71,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(cannon != null)
+        {
+            cannon.GetComponent<Animator>().Rebind();
+        }
         if (projectilesToSpawn != null && !fireOnce)
         {
             InvokeRepeating("Fire", 0.0f, fireRate);
@@ -134,7 +142,7 @@ public class Enemy : MonoBehaviour
             if (!exec)
             {
                 transform.position = Vector2.SmoothDamp(transform.position, minW, ref vel1, smoothTime, maxSpeed, Time.deltaTime);
-                if (transform.position.x - 0.1f <= minW.x)
+                if (transform.position.x - offset <= minW.x)
                 {
                     closerToMin = true;
                     closerToMax = false;
@@ -143,12 +151,12 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (transform.position.x - 0.1f <= minW.x)
+                if (transform.position.x - offset <= minW.x)
                 {
                     closerToMin = true;
                     closerToMax = false;
                 }
-                if (transform.position.x + 0.1f >= maxW.x)
+                if (transform.position.x + offset >= maxW.x)
                 {
                     closerToMin = false;
                     closerToMax = true;
@@ -167,20 +175,52 @@ public class Enemy : MonoBehaviour
         if (isBoss)
         {
             //Special attack for boss
-            if (specialAttackTimer <= 0f)
+            if (cannon != null)
             {
-                specialAttackTimer = specialAttackTime;
+                if (specialAttackTimer <= 0f && cannonReadyTimer <= 0f)
+                {
+                    specialAttackTimer = specialAttackTime;
+                    cannonReadyTimer = cannonReadyTime;
+                }
+                if (cannonReadyTimer > 0f)
+                {
+                    cannonReadyTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    if (specialAttackTimer > 0f && cannonReadyTimer <= 0f)
+                    {
+                        cannon.GetComponent<Animator>().SetBool("OpenClose", true);
+                        specialAttackTimer -= Time.deltaTime;
+                        if (specialAttackTimer <= 0f)
+                        {
+                            Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
+                            GameObject specialProj = Instantiate(specialProjectiles, targetPos, specialProjectiles.transform.rotation) as GameObject;
+                            if (specialProj.GetComponent<Rigidbody2D>())
+                            {
+                                specialProj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+                            }
+                            cannon.GetComponent<Animator>().SetBool("OpenClose", false);
+                        }
+                    }
+                }
             }
-            if (specialAttackTimer > 0f)
-            {
-                specialAttackTimer -= Time.deltaTime;
+            else {
                 if (specialAttackTimer <= 0f)
                 {
-                    Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
-                    GameObject specialProj = Instantiate(specialProjectiles, targetPos, specialProjectiles.transform.rotation) as GameObject;
-                    if (specialProj.GetComponent<Rigidbody2D>())
+                    specialAttackTimer = specialAttackTime;
+                }
+                if (specialAttackTimer > 0f)
+                {
+                    specialAttackTimer -= Time.deltaTime;
+                    if (specialAttackTimer <= 0f)
                     {
-                        specialProj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+                        Vector2 targetPos = new Vector2(transform.position.x + projectOffset.x, transform.position.y + projectOffset.y);
+                        GameObject specialProj = Instantiate(specialProjectiles, targetPos, specialProjectiles.transform.rotation) as GameObject;
+                        if (specialProj.GetComponent<Rigidbody2D>())
+                        {
+                            specialProj.GetComponent<Rigidbody2D>().AddForce(projectileSpeed, ForceMode2D.Impulse);
+                        }
                     }
                 }
             }

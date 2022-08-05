@@ -37,7 +37,7 @@ public class GameMenuManager : MonoBehaviour
         {
             hasSelected = true;
             playSound();
-            StartCoroutine(LoadScene(1));
+            StartCoroutine(LoadScene(2));
         }
     }
 

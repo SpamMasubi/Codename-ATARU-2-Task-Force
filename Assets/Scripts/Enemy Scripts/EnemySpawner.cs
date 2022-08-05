@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject dialogue; 
     public static int enemiesDefeated = 0;
 
-    float secondsBetweenSpawn = 1.2f;
+    float secondsBetweenSpawn = 1.1f;
     float elapsedTime = 0.0f;
     private int getNumberOfEnemies()
     {
