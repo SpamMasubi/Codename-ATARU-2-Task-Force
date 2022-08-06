@@ -32,7 +32,7 @@ public class ChapterIntro : MonoBehaviour
                 chapterName.text = "The Road to Victory";
                 break;
             case 4:
-                stageTitle.text = "Stage 4";
+                stageTitle.text = "Final Stage";
                 chapterName.text = "The Final War: United Nation Task Force vs Red Giant";
                 break;
             default:
