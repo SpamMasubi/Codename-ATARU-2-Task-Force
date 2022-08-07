@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
 	private float bulletInterval = 0.3f;
 	private float counter = 0f;
 
+	//mobile buttons
+	public GameObject joystick;
+	public GameObject outerJoystick;
+	public GameObject mobileControl;
+	private Vector2 startingPoint;
+	private int leftTouch = 99;
+
+
 	//bullets
 	public GameObject bullet;
 	public Vector2 bulletSpeed = new Vector2(0f, 1f);
@@ -31,17 +39,22 @@ public class PlayerController : MonoBehaviour
 
 	private ObjectPool bulletPool;
 	private ObjectPool missilePool;
+	private Rigidbody2D rb;
 
-    public void Awake()
+	public void Awake()
     {
 		instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_ANDROID || UNITY_IOS
+		mobileControl.SetActive(true);
+#endif
 		bulletPool = new ObjectPool(bullet, bulletPoolSize, "PlayerBulletPool");
 		missilePool = new ObjectPool(missiles, missilePoolSize, "PlayerMissilePool");
 		movementInputType = GameMenuManager.instance.currentPMIT;
+		rb = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
@@ -78,24 +91,22 @@ public class PlayerController : MonoBehaviour
 				}
 #endif
 
+				if (bulletPressed && bulletButton.value1)
+				{
+					InvokeRepeating("Fire", 0.0f, fireBulletRate);
+					bulletButton.value1 = false;
+				}
+				else if (!bulletPressed && !bulletButton.value1)
+				{
+					CancelInvoke("Fire");
+				}
 
-#if UNITY_ANDROID || UNITY_IOS
-			if(bulletPressed && bulletButton.value1)
-            {
-				InvokeRepeating("Fire", 0.0f, fireBulletRate);
-				bulletButton.value1 = false;
-			}
-			else if (!bulletPressed && !bulletButton.value1)
-            {
-				CancelInvoke("Fire");
-            }
+				if (missilePressed && missileButton.value1)
+				{
+					MissileFire();
+					missileButton.value1 = false;
+				}
 
-			if(missilePressed && missileButton.value1)
-            {
-				MissileFire();
-				missileButton.value1 = false;
-            }
-#endif
 			}
 			else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)
 			{
@@ -154,6 +165,51 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+    private void FixedUpdate()
+    {
+		int i = 0;
+		while (i < Input.touchCount)
+		{
+			Touch t = Input.GetTouch(i);
+			Vector2 touchPos = getTouchPosition(t.position); // * -1 for perspective cameras
+			if (t.phase == TouchPhase.Began)
+			{
+				if (t.position.x < Screen.width / 2)
+				{
+					leftTouch = t.fingerId;
+					startingPoint = touchPos;
+				}
+			}
+			else if (t.phase == TouchPhase.Moved && leftTouch == t.fingerId)
+			{
+				Vector2 offset = touchPos - startingPoint;
+				Vector2 direction = Vector2.ClampMagnitude(offset, 3.5f);
+
+				moveCharacter(direction);
+				Move(direction);
+
+				joystick.transform.position = new Vector2(outerJoystick.transform.position.x + direction.x, outerJoystick.transform.position.y + direction.y);
+
+			}
+			else if (t.phase == TouchPhase.Ended && leftTouch == t.fingerId)
+			{
+				leftTouch = 99;
+				joystick.transform.position = new Vector2(outerJoystick.transform.position.x, outerJoystick.transform.position.y);
+			}
+			++i;
+		}
+	}
+
+    void moveCharacter(Vector2 direction)
+	{
+		transform.Translate(direction * speed/2 * Time.deltaTime);
+	}
+		
+
+	Vector2 getTouchPosition(Vector2 touchPosition) //function for mobile controller on touch position
+	{
+		return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, transform.position.z));
+	}
 	void GetInput()
     {
 		if(bulletButton != null)
@@ -222,7 +278,12 @@ public class PlayerController : MonoBehaviour
 		Vector2 pos = transform.position;
 
 		//Calculate the new position
+#if UNITY_ANDROID || UNITY_IOS
+		pos += direction * Time.deltaTime;
+#endif
+#if UNITY_STANDALONE || UNITY_WEBGL
 		pos += direction * speed * Time.deltaTime;
+#endif
 
 		//Make sure the new position is outside the screen
 		pos.x = Mathf.Clamp(pos.x, min.x, max.x);

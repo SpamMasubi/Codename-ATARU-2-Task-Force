@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1402.6594}
-  m_SizeDelta: {x: 0, y: 1640.319}
+  m_AnchoredPosition: {x: 0, y: -1076.5}
+  m_SizeDelta: {x: 0, y: 1359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286361063
 MonoBehaviour:
@@ -200,7 +200,7 @@ MonoBehaviour:
     world was restored. The United Nation Task Force was celebrated as a hero for
     World Peace. Unfortunately, peace didn''t last for long. The death of General
     Karmov have sparked revenge for the Red Giant. The remaining three of the four
-    Red Giant Commanding officers vow to avenge their brothers death. Waging another
+    Red Giant Commanding officers vow to avenge their brother''ss death. Waging another
     war with the United Nation, they called for the United Nation Task Force into
     the battlefield. Fearing another World War, the UN TAsk Force brought back their
     "Ace of the Sky", Lt. Kazuki Yamamoto[Codename: ATARU]. Taking the skies once
@@ -288,7 +288,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.986534
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wireColor: {r: 1, g: 1, b: 1, a: 1}
-  UnitsSize: 56.8645
+  UnitsSize: 64.4
   constraint: 0
   camera: {fileID: 471653522}
   executeInUpdate: 1
@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   executeInUpdate: 1
-  anchorType: 5
-  anchorOffset: {x: -45, y: -5.3, z: 0}
+  anchorType: 3
+  anchorOffset: {x: 14, y: -5.3, z: 0}
 --- !u!212 &612413674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612413671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.567749, y: -5.3, z: 0}
+  m_LocalPosition: {x: -18.2, y: -5.3, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713125618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.882252, y: 3, z: 0}
+  m_LocalPosition: {x: 15.650002, y: 3, z: 0}
   m_LocalScale: {x: 25, y: 25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1338,8 +1338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 2, y: 57}
-  m_SizeDelta: {x: 1036, y: 113}
+  m_AnchoredPosition: {x: 0.000022888, y: 57}
+  m_SizeDelta: {x: 800, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117839902
 MonoBehaviour:

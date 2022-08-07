@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &286361062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 286361061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768450162}
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 57}
-  m_SizeDelta: {x: 1076, y: 113}
+  m_AnchoredPosition: {x: 0, y: 39.737}
+  m_SizeDelta: {x: 400, y: 39.737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286361063
 MonoBehaviour:
@@ -258,7 +258,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.986534
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wireColor: {r: 1, g: 1, b: 1, a: 1}
-  UnitsSize: 56.8645
+  UnitsSize: 64.4
   constraint: 0
   camera: {fileID: 471653522}
   executeInUpdate: 1
@@ -334,7 +334,7 @@ RectTransform:
   m_GameObject: {fileID: 634418619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0007938, y: 1.0007938, z: 1.0007938}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768450162}
@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1495829021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ RectTransform:
   m_GameObject: {fileID: 1495829020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768450162}
@@ -438,8 +438,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.00003624, y: 56.5}
-  m_SizeDelta: {x: 1076, y: 113}
+  m_AnchoredPosition: {x: 0, y: 39.737}
+  m_SizeDelta: {x: 400, y: 39.737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495829023
 MonoBehaviour:
@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 1638124012}
   - component: {fileID: 1638124013}
   - component: {fileID: 1638124014}
+  - component: {fileID: 1638124015}
   m_Layer: 0
   m_Name: Red Giant Villain
   m_TagString: Untagged
@@ -555,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638124011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.5, y: -5.4, z: 0}
+  m_LocalPosition: {x: 30.06667, y: -5.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -608,7 +609,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8125, y: 0.8125}
+  m_Size: {x: 12.0625, y: 17.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -634,6 +635,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1638124015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638124011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af1251785278e047bda589a84dff137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInUpdate: 1
+  anchorType: 2
+  anchorOffset: {x: -5.14, y: 14.14, z: 0}
 --- !u!1 &1713125618
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,8 +750,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   executeInUpdate: 1
-  anchorType: 4
-  anchorOffset: {x: 0, y: 3, z: 0}
+  anchorType: 1
+  anchorOffset: {x: 0, y: 19, z: 0}
 --- !u!114 &1713125622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -984,7 +1000,7 @@ RectTransform:
   m_GameObject: {fileID: 2117839900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768450162}
@@ -992,8 +1008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 57}
-  m_SizeDelta: {x: 1076, y: 113}
+  m_AnchoredPosition: {x: 0, y: 39.737}
+  m_SizeDelta: {x: 400, y: 39.737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117839902
 MonoBehaviour:

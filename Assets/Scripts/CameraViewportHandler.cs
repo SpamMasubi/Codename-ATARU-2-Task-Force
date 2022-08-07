@@ -126,6 +126,16 @@ public class CameraViewportHandler : MonoBehaviour
         ComputeResolution();
     }
 
+    private void Start()
+    {
+#if UNITY_STANDALONE || UNITY_WEBGL
+        UnitsSize = 56.9124f;
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        UnitsSize = 64.4f;
+#endif
+    }
+
     private void ComputeResolution()
     {
         float leftX, rightX, topY, bottomY;
@@ -193,6 +203,6 @@ public class CameraViewportHandler : MonoBehaviour
         }
         Gizmos.matrix = temp;
     }
-    #endregion
+#endregion
 
 } // class
