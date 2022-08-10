@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 					MissileFire();
 				}
 #endif
-
+#if UNITY_ANDROID || UNITY_IOS
 				if (bulletPressed && bulletButton.value1)
 				{
 					InvokeRepeating("Fire", 0.0f, fireBulletRate);
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 					MissileFire();
 					missileButton.value1 = false;
 				}
+#endif
 
 			}
 			else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)

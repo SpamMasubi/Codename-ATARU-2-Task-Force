@@ -21,11 +21,11 @@ public class GameSoundManager : MonoBehaviour
         AS.clip = null;
     }
 
-    public void playSFX(AudioClip sounds, float volumeScale)
+    public void playSFX(AudioClip sounds)
     {
         if(sounds != null)
         {
-            AS.PlayOneShot(sounds, volumeScale);
+            AS.PlayOneShot(sounds, GameMenuManager.sfxVolumeSet);
         }
     }
 

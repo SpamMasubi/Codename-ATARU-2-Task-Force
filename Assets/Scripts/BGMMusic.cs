@@ -54,6 +54,7 @@ public class BGMMusic : MonoBehaviour
 
     public void PlaySong(AudioClip clip)
     {
+        audioS.volume = GameMenuManager.musicVolumeSet;
         audioS.clip = clip;
         audioS.Play();
     }

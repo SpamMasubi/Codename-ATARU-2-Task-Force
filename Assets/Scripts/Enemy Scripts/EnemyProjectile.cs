@@ -33,7 +33,7 @@ public class EnemyProjectile : MonoBehaviour
     {   
         if (explosionEffect != null)
         {
-            GameSoundManager.instance.playSFX(explosionSFX, 1f);
+            GameSoundManager.instance.playSFX(explosionSFX);
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
             Destroy(explosion, explosionEffectLength);
         }

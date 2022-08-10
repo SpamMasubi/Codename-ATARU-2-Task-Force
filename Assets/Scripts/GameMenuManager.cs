@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameMenuManager : MonoBehaviour
 {
     public static GameMenuManager instance;
+    private AudioSource music;
+    public static float musicVolumeSet;
+    public static float sfxVolumeSet;
     public AudioClip selection;
+    public Slider volumeSlider;
+    public Slider sfxSlider;
     public enum PlayerMovementInputType
     {
         MouseControl, ButtonControl, TiltControl
@@ -21,8 +27,18 @@ public class GameMenuManager : MonoBehaviour
     }
     private void Start()
     {
+        music = GetComponent<AudioSource>();
         _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
+        volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+    }
 
+    private void Update()
+    {
+        music.volume = volumeSlider.value;
+        musicVolumeSet = music.volume;
+
+        sfxVolumeSet = sfxSlider.value;
     }
 
     public void QuitGame()
@@ -48,6 +64,13 @@ public class GameMenuManager : MonoBehaviour
         hasSelected = false;
     }
 
+    public void savePrefs()
+    {
+        playSound();
+        PlayerPrefs.SetFloat("MusicVolume", music.volume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+    }
+
     public void switchToTilt()
     {
         playSound();
@@ -70,6 +93,6 @@ public class GameMenuManager : MonoBehaviour
 
     public void playSound()
     {
-        GameSoundManager.instance.playSFX(selection, 1f);
+        GameSoundManager.instance.playSFX(selection);
     }
 }

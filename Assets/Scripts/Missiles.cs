@@ -27,7 +27,7 @@ public class Missiles : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collided = true;
-        GameSoundManager.instance.playSFX(explosionSFX, 1f);
+        GameSoundManager.instance.playSFX(explosionSFX);
         if(explosionEffect != null)
         {
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6810003418160660836}
   - component: {fileID: 6810003418160660763}
   - component: {fileID: 60735107908725887}
+  - component: {fileID: -5716800508657091901}
   - component: {fileID: 5148072733879350712}
   m_Layer: 9
   m_Name: Tank Bullet
@@ -153,6 +154,19 @@ MonoBehaviour:
   explosionSFX: {fileID: 0}
   explosionEffect: {fileID: 0}
   explosionEffectLength: 0
+--- !u!114 &-5716800508657091901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810003418160660761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c2d62117e39d144860746b686cb46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusic: 0
 --- !u!82 &5148072733879350712
 AudioSource:
   m_ObjectHideFlags: 0

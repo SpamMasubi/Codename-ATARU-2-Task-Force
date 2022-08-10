@@ -93,7 +93,7 @@ public class Loot : MonoBehaviour
         {
             if (GameSoundManager.instance != null)
             {
-                GameSoundManager.instance.playSFX(explosionsfx, 1f);
+                GameSoundManager.instance.playSFX(explosionsfx);
             }
         }
     }

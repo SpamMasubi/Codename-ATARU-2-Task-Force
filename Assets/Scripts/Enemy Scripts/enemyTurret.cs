@@ -110,7 +110,7 @@ public class enemyTurret : MonoBehaviour
         {
             if (GameSoundManager.instance != null)
             {
-                GameSoundManager.instance.playSFX(explosionsfx, 1f);
+                GameSoundManager.instance.playSFX(explosionsfx);
             }
         }
     }

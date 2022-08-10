@@ -82,6 +82,6 @@ public class ChapterIntro : MonoBehaviour
 
     public void playSound()
     {
-        GameSoundManager.instance.playSFX(selection, 1f);
+        GameSoundManager.instance.playSFX(selection);
     }
 }

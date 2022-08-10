@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void PauseUnPause()
+    public void PauseUnPause()
     {
         if (!pauseMenu.activeInHierarchy)
         {
@@ -62,6 +62,6 @@ public class PauseMenu : MonoBehaviour
 
     public void playSound()
     {
-        GameSoundManager.instance.playSFX(selection, 1f);
+        GameSoundManager.instance.playSFX(selection);
     }
 }
