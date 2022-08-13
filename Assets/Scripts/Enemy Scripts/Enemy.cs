@@ -103,9 +103,16 @@ public class Enemy : MonoBehaviour
             Vector2 minH = Camera.main.ScreenToWorldPoint(new Vector2(0f, minHeight));
             Vector2 maxH = Camera.main.ScreenToWorldPoint(new Vector2(0f, maxHeight));
             float height = Random.Range(minH.y, maxH.y);
-
-            minWidth = Screen.width * 0f;
-            maxWidth = Screen.width * 1f;
+            if (enemyType == EnemyType.Ground && GameManager.stage == 4)
+            {
+                minWidth = Screen.width * 0.2f;
+                maxWidth = Screen.width * 0.7f;
+            }
+            else
+            {
+                minWidth = Screen.width * 0f;
+                maxWidth = Screen.width * 1f;
+            }
             minW = Camera.main.ScreenToWorldPoint(new Vector2(minWidth, 0f));
             maxW = Camera.main.ScreenToWorldPoint(new Vector2(maxWidth, 0f));
             minW.y = height;

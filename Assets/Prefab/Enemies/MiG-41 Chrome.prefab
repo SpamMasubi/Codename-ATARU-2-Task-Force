@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 748645870, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 1880785839, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -247,8 +247,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1489188353
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -917380273, guid: e5338beddc4e15a419d44d5356f9ba4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -295,8 +295,8 @@ MonoBehaviour:
   damage: 5
   projectilesToSpawn: {fileID: 4862576632115095607, guid: 874816f569e6980458e0edd26a942ad5, type: 3}
   fireRate: 1
-  projectOffset: {x: 0, y: -1}
-  projectileSpeed: {x: 0, y: -5}
+  projectOffset: {x: 0, y: -5}
+  projectileSpeed: {x: 0, y: -40}
   offset: 3.5
   isBoss: 1
   fireOnce: 0

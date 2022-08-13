@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - PlayerProjectiles
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -46,11 +47,14 @@ TagManager:
   - name: EnemyGround
     uniqueID: 2820898329
     locked: 0
-  - name: Player Jet
-    uniqueID: 1581184289
-    locked: 0
   - name: Enemy Jet
     uniqueID: 2805778943
+    locked: 0
+  - name: Enemy Projectiles
+    uniqueID: 2875495225
+    locked: 0
+  - name: Player Jet
+    uniqueID: 1581184289
     locked: 0
   - name: Effects
     uniqueID: 2567336959

@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36af7e50d0ed63640bb6f326adaf76d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSong: {fileID: 8300000, guid: 6fec1bace64ea4a9892b73948c502b31, type: 3}
-  bossSong: {fileID: 8300000, guid: aff07b1e9489f43388b5344402878dbc, type: 3}
+  levelSong: {fileID: 8300000, guid: 780107a53f66d4699b217f6762ddc93b, type: 3}
+  bossSong: {fileID: 8300000, guid: 8ab12ab154e08464eb8d14846dbbf576, type: 3}
 --- !u!4 &24672296
 Transform:
   m_ObjectHideFlags: 0
@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 691691848}
   - component: {fileID: 691691851}
   m_Layer: 0
-  m_Name: Stage 3
+  m_Name: Stage 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,7 +1420,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 28e887580ff6c6a4d96a326755cfbb73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3fe148f4a4440b4985eb5edf3ca74ad, type: 3}
   m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3010,7 +3010,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4234,10 +4234,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemies: 3
   enemiesToSpawn:
-  - {fileID: 9200257729535447154, guid: cf8dc01301a5f504783381e5e8d84059, type: 3}
-  - {fileID: 7709282137810129631, guid: 222ecbfbbaea0444490bc08c9913b0ba, type: 3}
+  - {fileID: 363059668881936254, guid: e1bf13ec2fa468949a1f1cd40b5616b1, type: 3}
+  - {fileID: 4300344498293905540, guid: 3f17bfc3ee51ba24c8b68d723a563e4a, type: 3}
   - {fileID: 908634856826486546, guid: 274eeb848621f1b47a94026dbdf4702c, type: 3}
-  enemyBoss: {fileID: 6343671289578617643, guid: e0b28996338d5b540a4d40cbfbc0e4dd, type: 3}
+  - {fileID: 27357617691679557, guid: 35a835730ec909c48b23dfbc0f5b3369, type: 3}
+  - {fileID: 8536617169163212841, guid: 1e851457557c8a040a05e5d28601af87, type: 3}
+  enemyBoss: {fileID: 1407749062245148503, guid: 24ec0b38db7ace64198a2769b9e8ecae, type: 3}
   bossHealthBar: {fileID: 448240731}
   dialogue: {fileID: 1505643557}
 --- !u!4 &1818935433
@@ -5081,7 +5083,7 @@ GameObject:
   - component: {fileID: 2072777162}
   - component: {fileID: 2072777163}
   m_Layer: 0
-  m_Name: Stage 3 (1)
+  m_Name: Stage 4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5143,7 +5145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 28e887580ff6c6a4d96a326755cfbb73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3fe148f4a4440b4985eb5edf3ca74ad, type: 3}
   m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0

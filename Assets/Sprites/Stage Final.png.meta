@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec6975b829c413843bffe5988692c51a
+guid: a3fe148f4a4440b4985eb5edf3ca74ad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -68,7 +68,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -140,133 +140,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Second Boss_0
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 39
-        width: 52
-        height: 71
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80fc067e2a27e414b868b9f6e06fefff
-      internalID: 1178684859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Second Boss_1
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 39
-        width: 52
-        height: 71
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7224062e85b7e0c4db5d77e3026b879a
-      internalID: 1794986898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Second Boss_2
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 0
-        width: 11
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.72}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b9b8db6ead0cd549ac00d361b7d0423
-      internalID: -785809702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Second Boss_3
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 9
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28dda4f937f367a488a814ab3dbe83ae
-      internalID: 575493482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Second Boss_4
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 3
-        width: 8
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9a556a186c2fa446b1a956b01dd854d
-      internalID: -765821057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Second Boss_5
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 3
-        width: 37
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0b246064a628ff4ba48342282b7e748
-      internalID: 299612901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -277,13 +151,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Second Boss_0: 1178684859
-      Second Boss_1: 1794986898
-      Second Boss_5: 299612901
-      Second Boss_4: -765821057
-      Second Boss_3: 575493482
-      Second Boss_2: -785809702
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

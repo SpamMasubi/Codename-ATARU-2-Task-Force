@@ -196,16 +196,19 @@ MonoBehaviour:
   fireRate: 0.5
   projectOffset: {x: 0, y: 0}
   projectileSpeed: {x: 0, y: -15}
+  offset: 0
   isBoss: 0
   fireOnce: 0
   healthBar: {fileID: 0}
   scoreToIncrease: 5
   specialProjectiles: {fileID: 0}
   specialAttackTime: 0
+  cannon: {fileID: 0}
+  cannonReadyTime: 0
   doubleMissiles: 1
   missiles: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
   missileProjectOffsetR: {x: -0.5, y: -5}
   missileProjectOffsetL: {x: 0.5, y: -5}
   missileSpeed: {x: 0, y: -15}
   smoothTime: 1
-  enemyType: 2
+  enemyType: 3

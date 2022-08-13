@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343671287676657541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -233,9 +233,9 @@ GameObject:
   - component: {fileID: 6343671288242080292}
   - component: {fileID: 6343671288242080293}
   - component: {fileID: 6343671288242080294}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Turret(R)
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343671288242080288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.74, y: -0.29, z: 0}
+  m_LocalPosition: {x: -3.74, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -354,7 +354,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.72}
     oldSize: {x: 0.6875, y: 1.125}
     newSize: {x: 0.6875, y: 1.125}
     adaptiveTilingThreshold: 0.5
@@ -363,16 +363,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15447867, y: 0.5821076}
-      - {x: -0.34854126, y: 0.3756235}
-      - {x: -0.3396303, y: 0.13459711}
-      - {x: -0.15208226, y: -0.051864196}
-      - {x: -0.15687333, y: -0.5577083}
-      - {x: 0.17603989, y: -0.5625}
-      - {x: 0.17277394, y: -0.027809605}
-      - {x: 0.3390295, y: 0.11672709}
-      - {x: 0.34746838, y: 0.3901756}
-      - {x: 0.12812348, y: 0.57208335}
+    - - {x: -0.15156376, y: 0.32449064}
+      - {x: -0.33351713, y: 0.12398599}
+      - {x: -0.34375, y: -0.11480802}
+      - {x: -0.16300033, y: -0.2567688}
+      - {x: -0.15282205, y: -0.8157611}
+      - {x: 0.16674852, y: -0.81431705}
+      - {x: 0.15532236, y: -0.2526481}
+      - {x: 0.34980243, y: -0.111915074}
+      - {x: 0.32640684, y: 0.12313505}
+      - {x: 0.15156393, y: 0.31499994}
   m_UseDelaunayMesh: 0
 --- !u!1 &6343671288903510856
 GameObject:
@@ -530,7 +530,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1727630337
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -5564397493214910013, guid: f5246608584596f45a9a22eb0f3cf0a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
