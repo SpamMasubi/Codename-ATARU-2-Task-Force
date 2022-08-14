@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2115572323, guid: 9934c75e0503469448eb749bc266f06e, type: 3}
-  m_Color: {r: 1, g: 0.91453236, b: 0.3820755, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,6 +177,10 @@ MonoBehaviour:
   itemsDrop:
   - item: {fileID: 5963811895301373175, guid: df8ca821d2251cf438d65cbdee0d79eb, type: 3}
     spawnRate: 75
+    minSpawnProb: 0
+    maxSpawnProb: 0
+  - item: {fileID: 7571992972234583420, guid: 2dce886a27442e647bdd2f94e4283182, type: 3}
+    spawnRate: 25
     minSpawnProb: 0
     maxSpawnProb: 0
   explosionEffect: {fileID: 1558453681934022, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}

@@ -5,9 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public static PlayerController instance;
+	
 	public float speed = 10f, speedAccX = 20f, speedAccY = 2.5f;
 	public vButtons bulletButton, missileButton;
 	public bool shootBulletAutomatically = true;//for Tilt control, jet will shoot bullet autmatically
+
+	//Shield Attributes
+	private float startTime = 10;//the time when the user clicks on play
+	float currentTime; //the ellapsed time after the user clicks on play
+	public GameObject shield;
+	public static bool shieldOn;
 
 	private bool bulletPressed, missilePressed;
 	private float bulletInterval = 0.3f;
@@ -60,9 +67,9 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GetInput();
 		if (!PauseMenu.isPause)
 		{
+			GetInput();
 			if (movementInputType == GameMenuManager.PlayerMovementInputType.ButtonControl)
 			{
 #if UNITY_STANDALONE || UNITY_WEBGL
@@ -162,6 +169,18 @@ public class PlayerController : MonoBehaviour
 				//Tilt Control
 				transform.Translate(speedAccX * Time.deltaTime * Input.acceleration.x, speedAccY * Time.deltaTime * Input.acceleration.y, 0f);
 			}
+
+			if (shieldOn)
+			{
+				currentTime -= 1 * Time.deltaTime;
+
+				if (currentTime <= 0)
+				{
+					currentTime = 0;
+					shieldOn = false;
+					shield.SetActive(false);
+				}
+			}
 		}
 
 	}
@@ -205,8 +224,14 @@ public class PlayerController : MonoBehaviour
 	{
 		transform.Translate(direction * speed/2 * Time.deltaTime);
 	}
-		
 
+	public void activateShield(int time)
+    {
+		shield.SetActive(true);
+		startTime = time;
+		currentTime = startTime;
+		shieldOn = true;
+    }
 	Vector2 getTouchPosition(Vector2 touchPosition) //function for mobile controller on touch position
 	{
 		return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, transform.position.z));

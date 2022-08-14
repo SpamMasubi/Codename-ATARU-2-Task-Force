@@ -214,12 +214,15 @@ MonoBehaviour:
   fireRate: 1
   projectOffset: {x: 0, y: 0}
   projectileSpeed: {x: 0, y: 0}
+  offset: 0
   isBoss: 0
   fireOnce: 1
   healthBar: {fileID: 0}
   scoreToIncrease: 10
   specialProjectiles: {fileID: 0}
   specialAttackTime: 0
+  cannon: {fileID: 0}
+  cannonReadyTime: 0
   doubleMissiles: 1
   missiles: {fileID: 1571669501420870690, guid: 494b0db481e0a69439282b2f8c0e6f21, type: 3}
   missileProjectOffsetR: {x: -2, y: 0}
@@ -277,10 +280,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.2
+  m_GravityScale: 0.02
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

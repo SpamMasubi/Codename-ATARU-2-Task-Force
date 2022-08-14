@@ -38,7 +38,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(explosion, explosionEffectLength);
         }
         collided = true;
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !PlayerController.shieldOn)
         {
             collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
         }

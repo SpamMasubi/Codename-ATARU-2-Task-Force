@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - PlayerProjectiles
   - Boss
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - EnemyProjectiles
   - Boss
   - BossProjectiles
-  - 
+  - Shield
   - 
   - 
   - 

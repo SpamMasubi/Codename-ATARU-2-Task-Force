@@ -37,9 +37,18 @@ public class PowerUps : MonoBehaviour
             }
             else if(powerUpType == PowerUpType.OneUP)
             {
+                //Gain 1-Up
                 if(GameStats.instance != null)
                 {
                     GameStats.instance.addLivesByAmount(perksToGive);
+                }
+            }
+            else if (powerUpType == PowerUpType.Shield)
+            {
+                //activate shield
+                if (PlayerController.instance != null)
+                {
+                    PlayerController.instance.activateShield(perksToGive);
                 }
             }
             else
