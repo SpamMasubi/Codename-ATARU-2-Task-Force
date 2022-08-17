@@ -69,32 +69,30 @@ public class enemyTurret : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GetComponentInParent<Enemy>())
+        if (collision.gameObject.CompareTag("PlayerProjectiles") && !isInvincible)
         {
-            if (collision.gameObject.CompareTag("PlayerProjectiles") && GetComponentInParent<Enemy>().isBoss && !isInvincible)
+            if (countTilDestroy <= 0)
             {
-                if (countTilDestroy <= 0)
+                Explosion();
+                if (flameEffectL != null)
                 {
-                    Explosion();
-                    if(flameEffectL != null)
-                    {
-                        flameEffectL.SetActive(true);
-                    }
-                    else if (flameEffectR != null)
-                    {
-                        flameEffectR.SetActive(true);
-                    }
-                    Destroy(gameObject);
+                    flameEffectL.SetActive(true);
                 }
-                else
+                else if (flameEffectR != null)
                 {
-                    countTilDestroy -= 1;
-                    StartCoroutine(InvincibilityFlash());
+                    flameEffectR.SetActive(true);
                 }
+                Destroy(gameObject);
+            }
+            else
+            {
+                countTilDestroy -= 1;
+                StartCoroutine(InvincibilityFlash());
             }
         }
+
     }
 
     void Explosion()

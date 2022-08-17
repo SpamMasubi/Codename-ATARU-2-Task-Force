@@ -138,7 +138,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.03
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   projectilesToSpawn: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
-  fireRate: 0.5
+  fireRate: 1.5
   projectOffset: {x: 0, y: 0}
   projectileSpeed: {x: 0, y: -15}
   offset: 0

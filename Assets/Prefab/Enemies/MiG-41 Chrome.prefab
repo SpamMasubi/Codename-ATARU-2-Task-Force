@@ -334,7 +334,7 @@ MonoBehaviour:
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
   numberOfFlashes: 20
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 7024296149385888335}
 --- !u!60 &1114239097424515553
 PolygonCollider2D:
   m_ObjectHideFlags: 0

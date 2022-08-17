@@ -231,7 +231,7 @@ MonoBehaviour:
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
   numberOfFlashes: 20
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 3345326108678355072}
 --- !u!50 &1759621360750068957
 Rigidbody2D:
   serializedVersion: 4

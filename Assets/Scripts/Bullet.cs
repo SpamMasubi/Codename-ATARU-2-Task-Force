@@ -34,4 +34,12 @@ public class Bullet : MonoBehaviour
         }
         PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
+        {
+            PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+        }
+    }
 }

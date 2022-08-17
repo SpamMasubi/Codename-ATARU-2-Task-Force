@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1407749061140527257}
   m_Layer: 8
   m_Name: Final Turret(L)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  Range: 7
+  Range: 8
   Target: {fileID: 0}
   gun: {fileID: 1407749061140527259}
   bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
@@ -127,7 +127,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 1407749061864572801}
   m_Layer: 8
   m_Name: Final Turret(R)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  Range: 7
+  Range: 8
   Target: {fileID: 0}
   gun: {fileID: 1407749061864572803}
   bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
@@ -631,7 +631,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 1407749062124327172}
   m_Layer: 8
   m_Name: Turret(R)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +973,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   projectilesToSpawn: {fileID: 1571669501420870690, guid: 494b0db481e0a69439282b2f8c0e6f21, type: 3}
   fireRate: 2
   projectOffset: {x: 0, y: -4}
-  projectileSpeed: {x: 0, y: -25}
+  projectileSpeed: {x: 0, y: -40}
   offset: 0
   isBoss: 1
   fireOnce: 0
@@ -1253,13 +1253,13 @@ MonoBehaviour:
   minHealth: 0
   maxHealth: 75
   healthFill: {fileID: 0}
-  explosionEffect: {fileID: 1956272555437364, guid: c07ae331f7494a64aa6d24356afebd33, type: 3}
+  explosionEffect: {fileID: 1956272555437364, guid: 52cc7ad3b657282488eabdfc861079fb, type: 3}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
   numberOfFlashes: 20
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 1407749062245148502}
 --- !u!1 &1407749062330641490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 1407749062441647870}
   m_Layer: 8
   m_Name: Turret(L)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1555,7 +1555,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

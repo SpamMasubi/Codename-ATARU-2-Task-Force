@@ -166,7 +166,6 @@ public class HealthManager : MonoBehaviour
                 healthFill = FindObjectOfType<Canvas>().transform.Find("BossHealthBar/HealthFill").GetComponent<Image>();
             }
         }
-        playerSprite = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()

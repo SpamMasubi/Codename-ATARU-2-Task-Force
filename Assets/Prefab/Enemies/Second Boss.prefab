@@ -200,7 +200,7 @@ MonoBehaviour:
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
   numberOfFlashes: 20
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 1374880737431954606}
 --- !u!60 &1374880737431954605
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1374880738363979529}
   m_Layer: 8
   m_Name: Turret(L)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -597,7 +597,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 1374880738695853164}
   m_Layer: 8
   m_Name: Turret(R)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -750,7 +750,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

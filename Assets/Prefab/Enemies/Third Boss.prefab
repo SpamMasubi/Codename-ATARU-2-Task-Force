@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 6343671288242080294}
   m_Layer: 8
   m_Name: Turret(R)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +348,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -732,7 +732,7 @@ MonoBehaviour:
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
   numberOfFlashes: 20
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 6343671289578617642}
 --- !u!114 &6343671289578617645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   projectilesToSpawn: {fileID: 1571669501420870690, guid: 494b0db481e0a69439282b2f8c0e6f21, type: 3}
   fireRate: 3
   projectOffset: {x: 1.3, y: -3}
-  projectileSpeed: {x: 0, y: -5}
+  projectileSpeed: {x: 0, y: -40}
   offset: 9
   isBoss: 1
   fireOnce: 0

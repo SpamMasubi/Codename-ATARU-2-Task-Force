@@ -42,4 +42,19 @@ public class Missiles : MonoBehaviour
         }
         PlayerController.instance.ReleaseMissile(gameObject);//Destroy bullet;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
+        {
+            GameSoundManager.instance.playSFX(explosionSFX);
+            if (explosionEffect != null)
+            {
+                GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
+                Destroy(explosion, explosionEffectLength);
+
+            }
+            PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+        }
+    }
 }
