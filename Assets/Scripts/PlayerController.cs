@@ -33,19 +33,15 @@ public class PlayerController : MonoBehaviour
 	public Vector2 bulletSpeed = new Vector2(0f, 1f);
 	public Vector3 spawnOffset;
 	public float fireBulletRate = 0.2f;
-	public int bulletPoolSize = 30;
 
 	//missiles
 	public GameObject missiles;
 	public GameObject launcherR, launcherL;
 	public Vector2 missileSpeed = new Vector2(0f, 1f);
 	public float fireMissileRate = 0.2f;
-	public int missilePoolSize = 30;
 
     public GameMenuManager.PlayerMovementInputType movementInputType;
 
-	private ObjectPool bulletPool;
-	private ObjectPool missilePool;
 	private Rigidbody2D rb;
 
 	public void Awake()
@@ -58,8 +54,6 @@ public class PlayerController : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
 		mobileControl.SetActive(true);
 #endif
-		bulletPool = new ObjectPool(bullet, bulletPoolSize, "PlayerBulletPool");
-		missilePool = new ObjectPool(missiles, missilePoolSize, "PlayerMissilePool");
 		movementInputType = GameMenuManager.instance.currentPMIT;
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -250,21 +244,24 @@ public class PlayerController : MonoBehaviour
 
 	void Fire()
 	{
-		GameObject bulletInstantiate = bulletPool.GetInstance();
-		bulletInstantiate.transform.position = transform.position + spawnOffset;
-		bulletInstantiate.GetComponent<Rigidbody2D>().AddForce(bulletSpeed, ForceMode2D.Impulse);
+		GameObject proj = Instantiate(bullet, transform.position + spawnOffset, bullet.transform.rotation) as GameObject;
+		if (proj.GetComponent<Rigidbody2D>())
+		{
+			proj.GetComponent<Rigidbody2D>().AddForce(bulletSpeed, ForceMode2D.Impulse);
+		}
 	}
 	
 	void MissileFire()
     {
 		if (GameStats.instance.checkCanShootMissile(1))
 		{
-			GameObject missileInstantiateR = missilePool.GetInstance();
-			GameObject missileInstantiateL = missilePool.GetInstance();
-			missileInstantiateR.transform.position = launcherR.transform.position;
-			missileInstantiateR.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
-			missileInstantiateL.transform.position = launcherL.transform.position;
-			missileInstantiateL.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+			GameObject playerProjR = Instantiate(missiles, launcherR.transform.position, missiles.transform.rotation) as GameObject;
+			GameObject playerProjL = Instantiate(missiles, launcherL.transform.position, missiles.transform.rotation) as GameObject;
+			if (playerProjR.GetComponent<Rigidbody2D>() && playerProjL.GetComponent<Rigidbody2D>())
+			{
+				playerProjR.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+				playerProjL.GetComponent<Rigidbody2D>().AddForce(missileSpeed, ForceMode2D.Impulse);
+			}
 			GameStats.instance.shootMissileByAmount(1);
 		}
     }
@@ -277,16 +274,6 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 	}
-
-	public void ReleaseBullet(GameObject bullet)
-    {
-		bulletPool.ReturnInstance(bullet);
-    }
-	
-	public void ReleaseMissile(GameObject missile)
-    {
-		missilePool.ReturnInstance(missile);
-    }
 
 	void Move(Vector2 direction)
 	{

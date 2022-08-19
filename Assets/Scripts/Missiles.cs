@@ -20,7 +20,7 @@ public class Missiles : MonoBehaviour
         if ((timer >= timeToDestroy) && !collided)
         {
             timer = 0f;
-            PlayerController.instance.ReleaseMissile(gameObject);//Destroy bullet;
+            Destroy(gameObject);//Destroy bullet;
         }
     }
 
@@ -40,7 +40,7 @@ public class Missiles : MonoBehaviour
                 collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
             }
         }
-        PlayerController.instance.ReleaseMissile(gameObject);//Destroy bullet;
+        Destroy(gameObject);//Destroy bullet;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +54,7 @@ public class Missiles : MonoBehaviour
                 Destroy(explosion, explosionEffectLength);
 
             }
-            PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+            Destroy(gameObject);//Destroy bullet;
         }
     }
 }

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Epilogue.unity
     guid: 6212c7f422d2cce45b63f8d2421cf8f5
+  - enabled: 1
+    path: Assets/Scenes/High Score Scene.unity
+    guid: 1bd183e8cb043eb459fd5aa2ec099cf8
   m_configObjects: {}

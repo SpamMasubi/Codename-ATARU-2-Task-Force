@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
         if((timer >= timeToDestroy) && !collided)
         {
             timer = 0f;
-            PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+            Destroy(gameObject);//Destroy bullet;
         }
     }
 
@@ -32,14 +32,14 @@ public class Bullet : MonoBehaviour
                 collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
             }
         }
-        PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+        Destroy(gameObject);//Destroy bullet;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
         {
-            PlayerController.instance.ReleaseBullet(gameObject);//Destroy bullet;
+            Destroy(gameObject);//Destroy bullet;
         }
     }
 }

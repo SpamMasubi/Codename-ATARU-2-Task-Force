@@ -8,7 +8,7 @@ public class TimeCounter : MonoBehaviour
     public Text timeUI;//refernce to the time counter UI Text
     public static bool bossAppeared = false;
 
-    public float startTime = 5;//the time when the user clicks on play
+    float startTime = 100;//the time when the user clicks on play
     float currentTime; //the ellapsed time after the user clicks on play
     private bool exec = false;
     

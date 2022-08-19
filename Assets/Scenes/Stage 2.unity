@@ -3930,7 +3930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUI: {fileID: 428026884}
-  startTime: 91
 --- !u!114 &1293416979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,10 +5179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUps:
-  - {fileID: 5988845484126815327, guid: 9cf137442efa9af449d928ee04fd1e44, type: 3}
   - {fileID: 3262725160866414642, guid: 24ae5564e7ed98743ace738a23f57898, type: 3}
-  probabilityFactor: 0.8
-  timeToSpawn: 20
+  - {fileID: 5988845484126815327, guid: 9cf137442efa9af449d928ee04fd1e44, type: 3}
+  probabilityFactor: 1
 --- !u!1 &1826987616
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ public class GameUIManager : MonoBehaviour
         if (winCanvas != null)
         {
             winCanvas.SetActive(true);
+            GameManager.stage += 1;
         }
     }
 
@@ -53,8 +54,12 @@ public class GameUIManager : MonoBehaviour
         SceneManager.LoadScene(index);
         EnemySpawner.enemiesDefeated = 0;
         TimeCounter.bossAppeared = false;
-        GameManager.stage += 1;
         BGMMusic.instance.PlaySong(BGMMusic.instance.levelSong);
+        if(GameManager.stage > 4)
+        {
+            ScoreManager.instance.setHighScore();
+            Destroy(FindObjectOfType<GameManager>().gameObject);
+        }
     }
 
     public void playSound()
