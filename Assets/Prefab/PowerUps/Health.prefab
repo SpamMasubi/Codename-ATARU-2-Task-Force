@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1727630337
+  m_SortingLayer: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,6 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 1
+  healthSFX: {fileID: 8300000, guid: 7f836909fa65b874cac9e469edb97e45, type: 3}
+  shieldSFX: {fileID: 0}
+  ammoSFX: {fileID: 0}
+  oneUpSFX: {fileID: 0}
   perksToGive: 100
   timeToDestroy: 3
 --- !u!58 &2787804905485121514

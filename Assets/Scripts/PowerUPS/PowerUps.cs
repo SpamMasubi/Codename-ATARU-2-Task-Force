@@ -10,6 +10,7 @@ public class PowerUps : MonoBehaviour
     }
 
     public PowerUpType powerUpType;
+    public AudioClip healthSFX, shieldSFX, ammoSFX, oneUpSFX;
     public int perksToGive = 10;
     public float timeToDestroy = 1f;//Time after which powerups will be destroy if no collision happens
 
@@ -29,6 +30,7 @@ public class PowerUps : MonoBehaviour
         {
             if(powerUpType == PowerUpType.Ammo)
             {
+                GameSoundManager.instance.playSFX(ammoSFX);
                 //increase ammo
                 if(GameStats.instance != null)
                 {
@@ -37,14 +39,16 @@ public class PowerUps : MonoBehaviour
             }
             else if(powerUpType == PowerUpType.OneUP)
             {
+                GameSoundManager.instance.playSFX(oneUpSFX);
                 //Gain 1-Up
-                if(GameStats.instance != null)
+                if (GameStats.instance != null)
                 {
                     GameStats.instance.addLivesByAmount(perksToGive);
                 }
             }
             else if (powerUpType == PowerUpType.Shield)
             {
+                GameSoundManager.instance.playSFX(shieldSFX);
                 //activate shield
                 if (PlayerController.instance != null)
                 {
@@ -53,6 +57,7 @@ public class PowerUps : MonoBehaviour
             }
             else
             {
+                GameSoundManager.instance.playSFX(healthSFX);
                 //increase Health
                 if (collision.gameObject.GetComponent<HealthManager>())
                 {

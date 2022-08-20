@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1581184289
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: 1415825031, guid: 462c3251456434544ae76594e4d2f150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 0.6
   damage: 1
+  impact: {fileID: 8300000, guid: da65321f79408304ea9829d31a0143ce, type: 3}
 --- !u!82 &7895163400174090086
 AudioSource:
   m_ObjectHideFlags: 0

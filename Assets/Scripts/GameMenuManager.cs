@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameMenuManager : MonoBehaviour
     public AudioClip selection;
     public Slider volumeSlider;
     public Slider sfxSlider;
+
+    //StandAlone
+    public GameObject controlMenu, mainMenu;
+    public GameObject startGameButton, controlButton, controlBackButton;
+
     public enum PlayerMovementInputType
     {
         MouseControl, ButtonControl, TiltControl
@@ -31,6 +37,11 @@ public class GameMenuManager : MonoBehaviour
         _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
         volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+
+        //Clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(startGameButton);
     }
 
     private void Update()
@@ -39,6 +50,28 @@ public class GameMenuManager : MonoBehaviour
         musicVolumeSet = music.volume;
 
         sfxVolumeSet = sfxSlider.value;
+    }
+
+    public void controlOpen()
+    {
+
+        controlMenu.SetActive(true);
+        mainMenu.SetActive(false);
+        //Clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(controlBackButton);
+
+    }
+
+    public void controlClose()
+    {
+        controlMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        //Clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(controlButton);
     }
 
     public void QuitGame()
@@ -54,6 +87,16 @@ public class GameMenuManager : MonoBehaviour
             hasSelected = true;
             playSound();
             StartCoroutine(LoadScene(2));
+        }
+    }
+
+    public void creditHS()
+    {
+        if (!hasSelected)
+        {
+            hasSelected = true;
+            playSound();
+            StartCoroutine(LoadScene(9));
         }
     }
 

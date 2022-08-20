@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4847514736128398160}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7110565784247954636
 SpriteRenderer:
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1727630337
+  m_SortingLayer: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 0, g: 0.03938818, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 3
+  healthSFX: {fileID: 0}
+  shieldSFX: {fileID: 8300000, guid: 4bc90660fa29b8042a4aa897994086fd, type: 3}
+  ammoSFX: {fileID: 0}
+  oneUpSFX: {fileID: 0}
   perksToGive: 10
   timeToDestroy: 3
 --- !u!58 &6603439511647061317
@@ -151,7 +155,7 @@ GameObject:
   - component: {fileID: 4847514736128398160}
   - component: {fileID: 4195182158294526507}
   m_Layer: 6
-  m_Name: F-78 Lum (1)
+  m_Name: UN TAsk Force Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,9 +214,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1727630337
+  m_SortingLayer: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e089bf81dda43314c83a9f1c4ef21b79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

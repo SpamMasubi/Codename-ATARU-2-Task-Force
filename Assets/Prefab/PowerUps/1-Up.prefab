@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4624269627152684572}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4944060806547656222
 SpriteRenderer:
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1727630337
+  m_SortingLayer: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 1, g: 0.027672686, b: 0, a: 1}
   m_FlipX: 0
@@ -101,6 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 2
+  healthSFX: {fileID: 0}
+  shieldSFX: {fileID: 0}
+  ammoSFX: {fileID: 0}
+  oneUpSFX: {fileID: 8300000, guid: c131e3fabde71a84ba153ddf1a79c4c1, type: 3}
   perksToGive: 1
   timeToDestroy: 3
 --- !u!58 &3986562142762463964
@@ -210,9 +214,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1727630337
+  m_SortingLayer: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: -734658509, guid: 462c3251456434544ae76594e4d2f150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

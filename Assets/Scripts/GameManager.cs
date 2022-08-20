@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager GM;
+    public static GameManager instance;
     public static int stage = 1;
     //[HideInInspector]
     public int numOfMissiles = 4, numOfLives = 3, scores = 0;
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         if (GM == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -20,6 +22,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void resetGame()
+    {
+        numOfMissiles = 4;
+        numOfLives = 3;
+        scores = 0;
     }
 
 }

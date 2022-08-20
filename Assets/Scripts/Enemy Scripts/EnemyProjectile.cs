@@ -7,7 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField]protected int damage = 5;
     [SerializeField]protected float timeToDestroy = 1f;//Time after which bullet will be destroy if no collision happens
     [SerializeField]protected bool destroyProjectile = true;
-    [SerializeField]protected AudioClip explosionSFX;
+    [SerializeField]protected AudioClip explosionSFX, impact;
     [SerializeField]protected GameObject explosionEffect;
     [SerializeField]protected float explosionEffectLength;
 
@@ -40,6 +40,7 @@ public class EnemyProjectile : MonoBehaviour
         collided = true;
         if (collision.gameObject.CompareTag("Player") && !PlayerController.shieldOn)
         {
+            GameSoundManager.instance.playSFX(impact);
             collision.gameObject.GetComponent<HealthManager>().DecreaseHealth(damage);
         }
         Destroy(gameObject);

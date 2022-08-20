@@ -38,20 +38,6 @@ public class BGMMusic : MonoBehaviour
         audioS.Stop();
     }
 
-    public void ResumeMusic()
-    {
-        /*
-        if (BossStart.startBoss)
-        {
-            PlaySong(bossSong);
-        }
-        else
-        {
-            PlaySong(levelSong);
-        }
-        */
-    }
-
     public void PlaySong(AudioClip clip)
     {
         audioS.volume = GameMenuManager.musicVolumeSet;

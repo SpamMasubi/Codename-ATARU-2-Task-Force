@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.9463495
+  m_Mass: 1.419891
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   timeToDestroy: 1
   destroyProjectile: 1
   explosionSFX: {fileID: 0}
+  impact: {fileID: 8300000, guid: da65321f79408304ea9829d31a0143ce, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectLength: 0
 --- !u!114 &7387241056455913315

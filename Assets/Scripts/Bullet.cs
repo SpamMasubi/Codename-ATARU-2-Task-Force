@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 
     public float timeToDestroy = 1f;//Time after which bullet will be destroy if no collision happens
     public int damage = 1;
+    public AudioClip impact;
 
     private bool collided = false;
     private float timer = 0f;
@@ -25,6 +26,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collided = true;
+        GameSoundManager.instance.playSFX(impact);
         if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.gameObject.GetComponent<PolygonCollider2D>().enabled)
@@ -37,6 +39,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameSoundManager.instance.playSFX(impact);
         if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);//Destroy bullet;
