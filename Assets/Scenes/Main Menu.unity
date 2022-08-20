@@ -3927,7 +3927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfMissiles: 4
-  numOfLives: 1
+  numOfLives: 3
   scores: 0
 --- !u!4 &1918053161
 Transform:
