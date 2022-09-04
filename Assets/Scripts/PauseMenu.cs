@@ -54,7 +54,14 @@ public class PauseMenu : MonoBehaviour
     {
         playSound();
         isPause = false;
-        SceneManager.LoadScene(index);
+        if (selectStage.replay)
+        {
+            SceneManager.LoadScene(10);
+        }
+        else
+        {
+            SceneManager.LoadScene(index);
+        }
         Time.timeScale = 1f;
         EnemySpawner.enemiesDefeated = 0;
         TimeCounter.bossAppeared = false;

@@ -52,7 +52,10 @@ public class GameUIManager : MonoBehaviour
         if (winCanvas != null)
         {
             winCanvas.SetActive(true);
-            GameManager.stage += 1;
+            if (!selectStage.replay)
+            {
+                GameManager.stage += 1;
+            }
         }
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
@@ -63,15 +66,22 @@ public class GameUIManager : MonoBehaviour
     public void loadScene(int index)
     {
         playSound();
-        SceneManager.LoadScene(index);
         EnemySpawner.enemiesDefeated = 0;
         TimeCounter.bossAppeared = false;
         BGMMusic.instance.PlaySong(BGMMusic.instance.levelSong);
-        if(GameManager.stage > 4)
+        if (selectStage.replay)
         {
-            ScoreManager.instance.setHighScore();
-            ScoreManager.instance.yourScore();
-            Destroy(FindObjectOfType<GameManager>().gameObject);
+            SceneManager.LoadScene(10);
+        }
+        else
+        {
+            SceneManager.LoadScene(index);
+            if (GameManager.stage > 4)
+            {
+                ScoreManager.instance.setHighScore();
+                ScoreManager.instance.yourScore();
+                Destroy(FindObjectOfType<GameManager>().gameObject);
+            }
         }
     }
 

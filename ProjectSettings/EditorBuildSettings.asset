@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/High Score Scene.unity
     guid: 1bd183e8cb043eb459fd5aa2ec099cf8
+  - enabled: 1
+    path: Assets/Scenes/Replay Scene.unity
+    guid: a243f12d48cf440408b8f0bcce1135ea
   m_configObjects: {}

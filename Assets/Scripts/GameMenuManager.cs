@@ -35,8 +35,8 @@ public class GameMenuManager : MonoBehaviour
     {
         music = GetComponent<AudioSource>();
         _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
-        volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
 
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
@@ -87,6 +87,16 @@ public class GameMenuManager : MonoBehaviour
             hasSelected = true;
             playSound();
             StartCoroutine(LoadScene(2));
+        }
+    }
+
+    public void replayGame()
+    {
+        if (!hasSelected)
+        {
+            hasSelected = true;
+            playSound();
+            StartCoroutine(LoadScene(10));
         }
     }
 
