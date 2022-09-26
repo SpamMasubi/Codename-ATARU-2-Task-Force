@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 number++;
             }
-            else if(temp[i].enemyType == Enemy.EnemyType.Wave)
+            else
             {
                 number += GameObject.FindObjectsOfType<EnemyWave>().Length;
             }

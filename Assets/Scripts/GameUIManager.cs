@@ -81,6 +81,7 @@ public class GameUIManager : MonoBehaviour
                 ScoreManager.instance.setHighScore();
                 ScoreManager.instance.yourScore();
                 Destroy(FindObjectOfType<GameManager>().gameObject);
+                PlayerPrefs.SetInt("ReplayButtonActive", 1);
             }
         }
     }

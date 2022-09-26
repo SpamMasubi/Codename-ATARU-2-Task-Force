@@ -323,7 +323,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  Range: 20
+  Range: 10
+  offset: {x: 0, y: -8, z: 0}
   Target: {fileID: 0}
   gun: {fileID: 6343671288242080288}
   bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}

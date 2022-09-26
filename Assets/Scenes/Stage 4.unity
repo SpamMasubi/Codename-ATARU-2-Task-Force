@@ -3196,6 +3196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1251181936}
   highScoreText: {fileID: 1926617607}
+  yourScoreText: {fileID: 0}
 --- !u!114 &1346816330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4233,7 +4234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77042ea22a0cf044ea73bbed0bda9032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemies: 3
+  maxEnemies: 5
   enemiesToSpawn:
   - {fileID: 363059668881936254, guid: e1bf13ec2fa468949a1f1cd40b5616b1, type: 3}
   - {fileID: 4300344498293905540, guid: 3f17bfc3ee51ba24c8b68d723a563e4a, type: 3}
@@ -4274,7 +4275,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 3262725160866414642, guid: 24ae5564e7ed98743ace738a23f57898, type: 3}
   - {fileID: 5988845484126815327, guid: 9cf137442efa9af449d928ee04fd1e44, type: 3}
-  probabilityFactor: 0.5
+  probabilityFactor: 0.65
 --- !u!1 &1826425629
 GameObject:
   m_ObjectHideFlags: 0

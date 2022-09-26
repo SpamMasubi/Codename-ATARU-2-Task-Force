@@ -6,7 +6,7 @@ public class PowerUPSpawners : MonoBehaviour
 {
     public GameObject[] powerUps = new GameObject[1];
     [Range(0f, 1f)]public float probabilityFactor = 0.6f;
-    float timeToSpawn = 60f; //in seconds
+    float timeToSpawn = 30f; //in seconds
 
     private float timer = 0f;
 

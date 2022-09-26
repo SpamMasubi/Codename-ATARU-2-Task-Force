@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1407749061140527335}
   - component: {fileID: 1407749061140527256}
   - component: {fileID: 1407749061140527257}
+  - component: {fileID: 8822004684600451565}
   m_Layer: 8
   m_Name: Final Turret(L)
   m_TagString: Boss
@@ -102,16 +103,19 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  Range: 8
+  Range: 0
+  offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   gun: {fileID: 1407749061140527259}
-  bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
-  FireRate: 1
+  bullet: {fileID: 8856588596364119714, guid: a299937bcb56a804a83a145c703f4ecf, type: 3}
+  FireRate: 1.5
   shootPoint: {fileID: 1407749061603664910}
   explosionEffect: {fileID: 4854961481124514091, guid: 0d8308efe455c70498de50a3b59b8b4c, type: 3}
   flameEffectR: {fileID: 0}
   flameEffectL: {fileID: 1407749062477890571}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  notInTarget: 1
+  countTilDestroy: 10
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
@@ -148,6 +152,26 @@ PolygonCollider2D:
       - {x: 0.46875, y: -0.859375}
       - {x: 0.46875, y: 0.390625}
   m_UseDelaunayMesh: 0
+--- !u!95 &8822004684600451565
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407749061140527259}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bedc4099f50484048bdc1b3cc0c506ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1407749061446352305
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +540,7 @@ GameObject:
   - component: {fileID: 1407749061864572815}
   - component: {fileID: 1407749061864572800}
   - component: {fileID: 1407749061864572801}
+  - component: {fileID: 4483496091703745721}
   m_Layer: 8
   m_Name: Final Turret(R)
   m_TagString: Boss
@@ -606,16 +631,19 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  Range: 8
+  Range: 0
+  offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   gun: {fileID: 1407749061864572803}
-  bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
-  FireRate: 1
+  bullet: {fileID: 8856588596364119714, guid: a299937bcb56a804a83a145c703f4ecf, type: 3}
+  FireRate: 1.5
   shootPoint: {fileID: 1407749062588760664}
   explosionEffect: {fileID: 4854961481124514091, guid: 0d8308efe455c70498de50a3b59b8b4c, type: 3}
   flameEffectR: {fileID: 1407749061773549055}
   flameEffectL: {fileID: 0}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  notInTarget: 1
+  countTilDestroy: 10
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
@@ -657,6 +685,26 @@ PolygonCollider2D:
       - {x: 0.45594054, y: -0.1903328}
       - {x: 0.45059755, y: 0.13195243}
   m_UseDelaunayMesh: 0
+--- !u!95 &4483496091703745721
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407749061864572803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cea942ffa1b4344981989c635d8fd0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1407749062030566524
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +997,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Range: 10
+  offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   gun: {fileID: 1407749062124327174}
   bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
@@ -958,6 +1007,8 @@ MonoBehaviour:
   flameEffectR: {fileID: 1407749062101023228}
   flameEffectL: {fileID: 0}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  notInTarget: 0
+  countTilDestroy: 5
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05
@@ -1226,7 +1277,7 @@ MonoBehaviour:
   isBoss: 1
   fireOnce: 0
   healthBar: {fileID: 0}
-  scoreToIncrease: 100
+  scoreToIncrease: 1000
   specialProjectiles: {fileID: 7126411985309277782, guid: 8ccb30da4d4183e4db17e3a5cf57b940, type: 3}
   specialAttackTime: 5
   cannon: {fileID: 0}
@@ -1531,6 +1582,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Range: 10
+  offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   gun: {fileID: 1407749062441647856}
   bullet: {fileID: 8856588596364119714, guid: 8df151fa19fe2c74fab85dcd0172a0f8, type: 3}
@@ -1540,6 +1592,8 @@ MonoBehaviour:
   flameEffectR: {fileID: 0}
   flameEffectL: {fileID: 1407749061467968052}
   explosionsfx: {fileID: 8300000, guid: c551238d8008d014d9060513ac0b41a0, type: 3}
+  notInTarget: 0
+  countTilDestroy: 5
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.05

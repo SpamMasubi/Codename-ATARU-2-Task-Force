@@ -4240,6 +4240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1107375845}
   highScoreText: {fileID: 1285040199}
+  yourScoreText: {fileID: 0}
 --- !u!114 &1346816330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5294,7 +5295,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 3262725160866414642, guid: 24ae5564e7ed98743ace738a23f57898, type: 3}
   - {fileID: 5988845484126815327, guid: 9cf137442efa9af449d928ee04fd1e44, type: 3}
-  probabilityFactor: 0.5
+  probabilityFactor: 0.65
 --- !u!1 &1826987616
 GameObject:
   m_ObjectHideFlags: 0

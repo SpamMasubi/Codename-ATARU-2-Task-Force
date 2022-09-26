@@ -108,6 +108,11 @@ public class Enemy : MonoBehaviour
                 minWidth = Screen.width * 0.2f;
                 maxWidth = Screen.width * 0.7f;
             }
+            else if(enemyType == EnemyType.Individual && !isBoss)
+            {
+                minWidth = Screen.width * 1.0f;
+                maxWidth = Screen.width * 1.02f;
+            }
             else
             {
                 minWidth = Screen.width * 0f;
@@ -146,35 +151,72 @@ public class Enemy : MonoBehaviour
     {
         if (enemyType == EnemyType.Individual && moveToFro)
         {
-            if (!exec)
+            if (!isBoss)
             {
-                transform.position = Vector2.SmoothDamp(transform.position, minW, ref vel1, smoothTime, maxSpeed, Time.deltaTime);
-                if (transform.position.x - offset <= minW.x)
+                if (!exec)
                 {
-                    closerToMin = true;
-                    closerToMax = false;
-                    exec = true;
+                    transform.position = Vector2.SmoothDamp(transform.position, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 0f, 0f)), ref vel1, smoothTime, maxSpeed, Time.deltaTime); ;
+                    if (transform.position.x - offset <= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 0f, 0f)).x)
+                    {
+                        closerToMin = true;
+                        closerToMax = false;
+                        exec = true;
+                    }
+                }
+                else
+                {
+                    if (transform.position.x - offset <= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 0f, 0f)).x)
+                    {
+                        closerToMin = true;
+                        closerToMax = false;
+                    }
+                    if (transform.position.x + offset >= maxW.x)
+                    {
+                        closerToMin = false;
+                        closerToMax = true;
+                    }
+                    if (closerToMax)
+                    {
+                        transform.position = Vector2.SmoothDamp(transform.position, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 0f, 0f)), ref vel1, smoothTime, maxSpeed, Time.deltaTime);
+                    }
+                    else if (closerToMin)
+                    {
+                        transform.position = Vector2.SmoothDamp(transform.position, maxW, ref vel2, smoothTime, maxSpeed, Time.deltaTime);
+                    }
                 }
             }
             else
             {
-                if (transform.position.x - offset <= minW.x)
-                {
-                    closerToMin = true;
-                    closerToMax = false;
-                }
-                if (transform.position.x + offset >= maxW.x)
-                {
-                    closerToMin = false;
-                    closerToMax = true;
-                }
-                if (closerToMax)
+                if (!exec)
                 {
                     transform.position = Vector2.SmoothDamp(transform.position, minW, ref vel1, smoothTime, maxSpeed, Time.deltaTime);
+                    if (transform.position.x - offset <= minW.x)
+                    {
+                        closerToMin = true;
+                        closerToMax = false;
+                        exec = true;
+                    }
                 }
-                else if (closerToMin)
+                else
                 {
-                    transform.position = Vector2.SmoothDamp(transform.position, maxW, ref vel2, smoothTime, maxSpeed, Time.deltaTime);
+                    if (transform.position.x - offset <= minW.x)
+                    {
+                        closerToMin = true;
+                        closerToMax = false;
+                    }
+                    if (transform.position.x + offset >= maxW.x)
+                    {
+                        closerToMin = false;
+                        closerToMax = true;
+                    }
+                    if (closerToMax)
+                    {
+                        transform.position = Vector2.SmoothDamp(transform.position, minW, ref vel1, smoothTime, maxSpeed, Time.deltaTime);
+                    }
+                    else if (closerToMin)
+                    {
+                        transform.position = Vector2.SmoothDamp(transform.position, maxW, ref vel2, smoothTime, maxSpeed, Time.deltaTime);
+                    }
                 }
             }
         }
@@ -212,7 +254,8 @@ public class Enemy : MonoBehaviour
                     }
                 }
             }
-            else {
+            else
+            {
                 if (specialAttackTimer <= 0f)
                 {
                     specialAttackTimer = specialAttackTime;

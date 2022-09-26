@@ -6,6 +6,8 @@ public class NonBulletProjectiles : MonoBehaviour
 {
     public float moveSpeed;
 
+    public bool dontFollow;
+
     Rigidbody2D rb;
 
     PlayerController player;
@@ -16,8 +18,15 @@ public class NonBulletProjectiles : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        moveDirection = (player.transform.position - transform.position).normalized * moveSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        if (dontFollow)
+        {
+            rb.velocity = (-transform.up * moveSpeed) + transform.position;
+        }
+        else
+        {
+            moveDirection = (player.transform.position - transform.position).normalized * moveSpeed;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        }
         Destroy(gameObject, 3f);
     }
 }

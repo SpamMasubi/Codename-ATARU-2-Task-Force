@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
 					missileButton.value1 = false;
 				}
 #endif
-
 			}
 			else if (movementInputType == GameMenuManager.PlayerMovementInputType.MouseControl)
 			{

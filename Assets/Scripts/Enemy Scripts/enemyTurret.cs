@@ -7,6 +7,7 @@ public class enemyTurret : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer;
 
     public float Range;
+    public Vector3 offset;
     public Transform Target;
     bool Detected = false;
     Vector2 Direction;
@@ -18,7 +19,9 @@ public class enemyTurret : MonoBehaviour
     public GameObject explosionEffect; 
     public GameObject flameEffectR, flameEffectL;
     public AudioClip explosionsfx;
+    public bool notInTarget;
 
+    [SerializeField]
     private int countTilDestroy = 10;
 
     [Header("Invincibility Flash")]
@@ -37,34 +40,44 @@ public class enemyTurret : MonoBehaviour
 
     void Update()
     {
-        Vector2 targetPos = Target.position;
-        Direction = targetPos - (Vector2)transform.position;
-        RaycastHit2D rayInfo = Physics2D.Raycast(transform.position, Direction, Range, whatIsPlayer); //rayInfo will be true only if hit the player.
-        if (rayInfo)
-        {
-            if (rayInfo.collider.gameObject.tag == "Player")
-            {
-                if (Detected == false)
-                {
-                    Detected = true;
-                }
-            }
-        }
-        else
-        {
-            if (Detected == true)
-            {
-                Detected = false;
-            }
-        }
-
-        if (Detected == true)
-        {
-            gun.transform.up = -Direction;
+        if (notInTarget) {
             if (Time.time > nextTimeToFire)
             {
                 nextTimeToFire = Time.time + 1 / FireRate;
                 Shoot();
+            }
+        }
+        else
+        {
+            Vector2 targetPos = Target.position;
+            Direction = targetPos - (Vector2)transform.position;
+            RaycastHit2D rayInfo = Physics2D.Raycast(transform.position + offset, Direction, Range, whatIsPlayer); //rayInfo will be true only if hit the player.
+            if (rayInfo)
+            {
+                if (rayInfo.collider.gameObject.tag == "Player")
+                {
+                    if (Detected == false)
+                    {
+                        Detected = true;
+                    }
+                }
+            }
+            else
+            {
+                if (Detected == true)
+                {
+                    Detected = false;
+                }
+            }
+
+            if (Detected == true)
+            {
+                gun.transform.up = -Direction;
+                if (Time.time > nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + 1 / FireRate;
+                    Shoot();
+                }
             }
         }
     }
@@ -134,7 +147,7 @@ public class enemyTurret : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, Range);
+        Gizmos.DrawWireSphere(transform.position + offset, Range);
     }
 
 }
