@@ -51,11 +51,18 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		movementInputType = GameMenuManager.instance.currentPMIT;
 #if UNITY_ANDROID || UNITY_IOS
 		mobileControl.SetActive(true);
+		if (movementInputType == GameMenuManager.PlayerMovementInputType.TiltControl)
+		{
+			joystick.SetActive(false);
+			outerJoystick.SetActive(false);
+		}
 #endif
-		movementInputType = GameMenuManager.instance.currentPMIT;
 		rb = GetComponent<Rigidbody2D>();
+		speedAccX = GameMenuManager.tiltValue;
+		speedAccY = Input.acceleration.y;
 	}
 
 	// Update is called once per frame
@@ -89,23 +96,6 @@ public class PlayerController : MonoBehaviour
 				if (Input.GetButtonDown("Fire2"))
 				{
 					MissileFire();
-				}
-#endif
-#if UNITY_ANDROID || UNITY_IOS
-				if (bulletPressed && bulletButton.value1)
-				{
-					InvokeRepeating("Fire", 0.0f, fireBulletRate);
-					bulletButton.value1 = false;
-				}
-				else if (!bulletPressed && !bulletButton.value1)
-				{
-					CancelInvoke("Fire");
-				}
-
-				if (missilePressed && missileButton.value1)
-				{
-					MissileFire();
-					missileButton.value1 = false;
 				}
 #endif
 			}
@@ -160,8 +150,38 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				//Tilt Control
-				transform.Translate(speedAccX * Time.deltaTime * Input.acceleration.x, speedAccY * Time.deltaTime * Input.acceleration.y, 0f);
+				float x = Input.acceleration.x ;//the value will be -1, 0 or 1 (for left, no input, and right)
+				float y = Input.acceleration.y - speedAccY;//the value will be -1, 0 or 1 (for down, no input, and up)
+
+				//now based on the input we compute a direction vector, and we normalize it to get a unit vector
+				Vector2 direction = new Vector2(x, y);
+
+				if(direction.sqrMagnitude > 1)
+                {
+					direction.Normalize();
+                }
+				//now we call the function that computes and sets the player's position
+				transform.Translate(speedAccX * Time.deltaTime * x, speedAccX * Time.deltaTime * y, 0f);
+				Move(direction);
 			}
+
+#if UNITY_ANDROID || UNITY_IOS
+			if (bulletPressed && bulletButton.value1)
+			{
+				InvokeRepeating("Fire", 0.0f, fireBulletRate);
+				bulletButton.value1 = false;
+			}
+			else if (!bulletPressed && !bulletButton.value1)
+			{
+				CancelInvoke("Fire");
+			}
+
+			if (missilePressed && missileButton.value1)
+			{
+				MissileFire();
+				missileButton.value1 = false;
+			}
+#endif
 
 			if (shieldOn)
 			{
@@ -215,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
     void moveCharacter(Vector2 direction)
 	{
-		transform.Translate(direction * speed/2 * Time.deltaTime);
+		transform.Translate(direction * speed/4.0f * Time.deltaTime);
 	}
 
 	public void activateShield(int time)

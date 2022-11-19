@@ -38,10 +38,12 @@ public class GameUIManager : MonoBehaviour
         }
         GameManager.instance.resetGame();
         BGMMusic.instance.StopSong();
+#if UNITY_STANDALONE || UNITY_WEBGL
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(replayButton);
+#endif
     }
     public void Win()
     {
@@ -57,10 +59,12 @@ public class GameUIManager : MonoBehaviour
                 GameManager.stage += 1;
             }
         }
+#if UNITY_STANDALONE || UNITY_WEBGL
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(nextStageButton);
+#endif
     }
 
     public void loadScene(int index)

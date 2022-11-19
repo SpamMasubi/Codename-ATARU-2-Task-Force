@@ -29,10 +29,12 @@ public class PauseMenu : MonoBehaviour
             isPause = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+#if UNITY_STANDALONE || UNITY_WEBGL
             //Clear selected object
             EventSystem.current.SetSelectedGameObject(null);
             //set a new selected object
             EventSystem.current.SetSelectedGameObject(resumeButton);
+#endif
         }
         else
         {

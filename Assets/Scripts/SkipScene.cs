@@ -14,10 +14,12 @@ public class SkipScene : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_STANDALONE || UNITY_WEBGL
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(skipButton);
+#endif
     }
 
     private void Update()

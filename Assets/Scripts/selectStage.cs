@@ -17,10 +17,12 @@ public class selectStage : MonoBehaviour
     {
         replay = true;
         GameManager.stage = 1;
+#if UNITY_STANDALONE || UNITY_WEBGL
         //Clear selected object
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(backButton);
+#endif
     }
     public void selectScene(int sceneNumber)
     {

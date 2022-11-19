@@ -8,27 +8,37 @@ using UnityEngine.EventSystems;
 public class GameMenuManager : MonoBehaviour
 {
     public static GameMenuManager instance;
-    public Button replay;
-    public Button replayWGL;
     private AudioSource music;
     public static float musicVolumeSet;
     public static float sfxVolumeSet;
+    public static float tiltValue;
     public AudioClip selection;
     public Toggle fullScreenToggle;
-    public GameObject DataDeleteText;
-    public GameObject DataDeleteTextWGL;
-
+    
     //StandAlone
     public GameObject controlMenu, mainMenu;
     public GameObject startGameButton, controlButton, controlBackButton;    
     public Slider volumeSlider;
-    public Slider sfxSlider;
-
+    public Slider sfxSlider;    
+    public Button replay;
+    public GameObject DataDeleteText;
+    
     ///WebGL
     public GameObject controlMenuWGL, mainMenuWGL;
     public GameObject startGameButtonWGL, controlButtonWGL, controlBackButtonWGL;
     public Slider volumeSliderWGL;
     public Slider sfxSliderWGL;
+    public Button replayWGL;
+    public GameObject DataDeleteTextWGL;
+
+    //Mobile
+    public GameObject controlMenuMobile, mainMenuMobile;
+    public Slider volumeSliderMobile;
+    public Slider sfxSliderMobile;
+    public Slider tiltSlider;
+    public Text tiltValueText;
+    public Button replayMobile;
+    public GameObject DataDeleteTextMobile;
 
     //Main Menu base on platforms
     public GameObject StandAloneMenu, WebGLMenu, MobileMenu; //1.StandAlone Platform 2.WebGL 3.Mobile Devices
@@ -56,6 +66,8 @@ public class GameMenuManager : MonoBehaviour
         volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         replay.interactable = (PlayerPrefs.GetInt("ReplayButtonActive") == 1) ? true : false;
+        fullScreenToggle.isOn = (PlayerPrefs.GetInt("FullScreenOn", 1) == 1) ? true : false;
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
 #elif UNITY_WEBGL
         WebGLMenu.SetActive(true);
         //Clear selected object
@@ -65,12 +77,16 @@ public class GameMenuManager : MonoBehaviour
         volumeSliderWGL.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSliderWGL.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         replayWGL.interactable = (PlayerPrefs.GetInt("ReplayButtonActive") == 1) ? true : false;
-#elif UNITY_IOS && UNITY_ANDROID
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
+#elif UNITY_ANDROID || UNITY_IOS
         MobileMenu.SetActive(true);
+        volumeSliderMobile.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSliderMobile.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        tiltSlider.value = PlayerPrefs.GetFloat("TiltValue", 100f);
+        replayMobile.interactable = (PlayerPrefs.GetInt("ReplayButtonActive") == 1) ? true : false;
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey, 1);
 #endif
         music = GetComponent<AudioSource>();
-        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
-        fullScreenToggle.isOn = (PlayerPrefs.GetInt("FullScreenOn", 1) == 1) ? true : false;
     }
 
     private void Update()
@@ -81,6 +97,14 @@ public class GameMenuManager : MonoBehaviour
 #elif UNITY_WEBGL
         music.volume = volumeSliderWGL.value;
         sfxVolumeSet = sfxSliderWGL.value;
+#elif UNITY_IOS || UNITY_ANDROID
+        music.volume = volumeSliderMobile.value;
+        sfxVolumeSet = sfxSliderMobile.value;
+        tiltValue = tiltSlider.value;
+        if(tiltValueText != null)
+        {
+            tiltValueText.text = tiltValue.ToString();
+        }
 #endif
         musicVolumeSet = music.volume;
     }
@@ -101,6 +125,9 @@ public class GameMenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(controlBackButtonWGL);
+#elif UNITY_IOS || UNITY_ANDROID
+        controlMenuMobile.SetActive(true);
+        mainMenuMobile.SetActive(false);
 #endif
     }
 
@@ -120,6 +147,9 @@ public class GameMenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(controlButtonWGL);
+#elif UNITY_IOS || UNITY_ANDROID
+        controlMenuMobile.SetActive(false);
+        mainMenuMobile.SetActive(true);
 #endif
     }
 
@@ -176,6 +206,9 @@ public class GameMenuManager : MonoBehaviour
         setFullScreen(fullScreenToggle.isOn);
 #elif UNITY_WEBGL
         PlayerPrefs.SetFloat("SFXVolume", sfxSliderWGL.value);
+#elif UNITY_ANDROID || UNITY_IOS
+        PlayerPrefs.SetFloat("SFXVolume", sfxSliderMobile.value);
+        PlayerPrefs.SetFloat("TiltValue", tiltSlider.value);
 #endif
     }
 
@@ -186,14 +219,21 @@ public class GameMenuManager : MonoBehaviour
         PlayerPrefs.DeleteKey("SFXVolume");
         PlayerPrefs.DeleteKey(playerMovementTypeKey);
         PlayerPrefs.DeleteKey("FullScreenOn");
-        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
-        fullScreenToggle.isOn = (PlayerPrefs.GetInt("FullScreenOn", 1) == 1) ? true : false;
+        PlayerPrefs.DeleteKey("TiltValue");
 #if UNITY_STANDALONE
         volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        fullScreenToggle.isOn = (PlayerPrefs.GetInt("FullScreenOn", 1) == 1) ? true : false;
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
 #elif UNITY_WEBGL
         volumeSliderWGL.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSliderWGL.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey);
+#elif UNITY_ANDROID || UNITY_IOS
+        volumeSliderMobile.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSliderMobile.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        tiltSlider.value = PlayerPrefs.GetFloat("TiltValue", 100f);
+        _pp = (PlayerMovementInputType)PlayerPrefs.GetInt(playerMovementTypeKey, 1);
 #endif
     }
 
@@ -210,6 +250,8 @@ public class GameMenuManager : MonoBehaviour
         DataDeleteText.SetActive(true);
 #elif UNITY_WEBGL
         DataDeleteTextWGL.SetActive(true);
+#elif UNITY_ANDROID || UNITY_IOS
+        DataDeleteTextMobile.SetActive(true);
 #endif
         StartCoroutine(HideText());
     }
