@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d39e6df779da1e943bc187e19456af91
+guid: d25f4d0dad74d0345a09636535b87856
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -140,91 +140,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: ATARU_0
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 35
-        width: 279
-        height: 328
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32c1b0d34568e0441b3cd5a783e42133
-      internalID: 252638006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ATARU_1
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 27
-        width: 279
-        height: 328
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d1a42f67ca33a9458dad4dd3aada33a
-      internalID: 1513933254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ATARU_2
-      rect:
-        serializedVersion: 2
-        x: 676
-        y: 22
-        width: 279
-        height: 328
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4a3c1b364ccd1543a53c5d3bb32da0c
-      internalID: 2122486918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ATARU_3
-      rect:
-        serializedVersion: 2
-        x: 1021
-        y: 14
-        width: 279
-        height: 328
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5149be78fb3c64547b2ad9431ccb5837
-      internalID: -1843281876
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -235,11 +151,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ATARU_2: 2122486918
-      ATARU_0: 252638006
-      ATARU_3: -1843281876
-      ATARU_1: 1513933254
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
