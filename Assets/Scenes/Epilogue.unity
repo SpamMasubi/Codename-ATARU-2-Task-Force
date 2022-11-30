@@ -301,7 +301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: Ataru, once again, triumphs against the Red Giant terrorist. The world
+  m_Text: Kazuki, once again, triumphs against the Red Giant terrorist. The world
     is at peace once more. The United Nation Task Force began to wipe out the remaining
     Red Giant forces across the globe. Many surrendered to the United Nation Task
     Force and world's standing military forces. Some went into hiding hoping to revive
@@ -312,8 +312,8 @@ MonoBehaviour:
     international terrorists and some were put in re-education community service
     program. The end of the Red Giant marks a victorious wiin for the United Nation
     Task Force. While the United Nation Task Force continues to operate under a new
-    command of the UN, Ataru retires as their fighter pilot and the US-Japan Joint
-    Air Force. With his mission complete, Ataru goes back to his home with his beloved
+    command of the UN, Kazuki retires as their fighter pilot and the US-Japan Joint
+    Air Force. With his mission complete, Kazuki goes back to his home with his beloved
     wife and family.
 --- !u!222 &286361064
 CanvasRenderer:
@@ -457,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433708952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.9562, y: 9.003199, z: 0}
+  m_LocalPosition: {x: 16.956202, y: 9.006613, z: 0}
   m_LocalScale: {x: 22, y: 13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -519,7 +519,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 16.003199
+  orthographic size: 16.006613
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -866,7 +866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688778666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6438007, y: 0, z: 0}
+  m_LocalPosition: {x: -1.6437988, y: 0, z: 0}
   m_LocalScale: {x: 23.368994, y: 14.41129, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1110,7 +1110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245608927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.9562, y: -9.003199, z: 0}
+  m_LocalPosition: {x: 16.956202, y: -9.006613, z: 0}
   m_LocalScale: {x: 21.6, y: 12.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
